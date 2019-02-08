@@ -24,7 +24,7 @@ export default {
             users: []
         }
     },
-    mounted () {
+        mounted() {
         //fetch('/api/users')
         //    .then(response => {
         //        return response.json()

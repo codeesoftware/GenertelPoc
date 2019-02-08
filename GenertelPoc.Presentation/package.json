@@ -2,20 +2,28 @@
   "name": "GenertelPoc.Presentation",
   "private": true,
   "version": "0.0.0",
+  "scripts": {
+    "build:dev": "webpack --config webpack.development.config.js",
+    "build:prod": "webpack"
+  },
   "devDependencies": {
-    "aspnet-webpack": "^2.0.1",
-    "css-loader": "^0.25.0",
-    "event-source-polyfill": "^0.0.7",
-    "extract-text-webpack-plugin": "^2.0.0-rc",
-    "file-loader": "^0.9.0",
+    "aspnet-webpack": "^3.0.0",
+    "clean-webpack-plugin": "^1.0.1",
+    "css-loader": "^2.1.0",
+    "event-source-polyfill": "^1.0.5",
+    "file-loader": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "vue": "^2.2.2",
-    "vue-loader": "^11.1.4",
-    "vue-router": "^2.3.0",
-    "vue-template-compiler": "^2.2.2",
-    "webpack": "^2.2.0",
-    "webpack-hot-middleware": "^2.12.2"
+    "mini-css-extract-plugin": "0.5.0",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "url-loader": "^1.1.2",
+    "vue": "^2.6.4",
+    "vue-loader": "^15.6.2",
+    "vue-router": "^3.0.2",
+    "vue-template-compiler": "^2.6.4",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-hot-middleware": "^2.24.3"
   }
 }
