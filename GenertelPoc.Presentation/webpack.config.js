@@ -8,13 +8,17 @@ module.exports = (env) => {
     return [{
         mode: 'production',
         resolve: { extensions: ['.js'] },
-        entry: { 'desktop': './ClientApp/boot.js' },
+        entry: { 'genertel': './ClientApp/boot.js' },
        
         optimization: {
             splitChunks: {
-                chunks: "all",
-                minSize: 10000,
-                automaticNameDelimiter: "_"
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all'
+                    }
+                }
             }
         },
         output: {
