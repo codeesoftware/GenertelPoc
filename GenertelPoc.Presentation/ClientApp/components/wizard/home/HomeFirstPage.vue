@@ -25,10 +25,10 @@ export default {
   },
   methods: {
     back() {
-      this.$router.push(`/home/${this.pageId - 1}`);
+      this.$router.push("/home/0");
     },
     next() {
-      this.$router.push(`/home/${this.pageId + 1}`);
+      this.$router.push("/home/2");
     }
   }
 };

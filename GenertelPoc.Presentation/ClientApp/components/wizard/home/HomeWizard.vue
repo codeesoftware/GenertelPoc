@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h3>a{{this.getCurrentPageId}}</h3>
-    <home-first-page :pageId="1"></home-first-page>
-    <home-second-page :pageId="2"></home-second-page>
+    <h3>Jelenlegi oldal {{this.currentPageId}}</h3>
+    <home-first-page v-if="this.currentPageId == 1" :pageId="1"></home-first-page>
+    <home-second-page v-if="this.currentPageId == 2" :pageId="2"></home-second-page>
   </div>
 </template>
 
@@ -19,31 +19,39 @@ export default {
   },
   data() {
     return {
+      currentPageId: Number
       // test: Object
     };
   },
   methods: {
-    // setWizardVM(wizardVM) {
-    //   debugger;
-    //   this.wizardVM = wizardVM;
-    // }
+    setCurrentPageId(pageId) {
+      this.currentPageId = pageId;
+    }
   },
   computed: {
     getCurrentPageId() {
       console.log(this.$store.state.offer.offerState);
       //return this.$store.getters["wizard/currentPageId"];
-      return this.$store.state.offer.offerState.currentPageId;
-      //return this.test.currentPageId;
+      //   return this.$store.state.offer.offerState.currentPageId;
+      return this.currentPageId;
     }
   },
-  created() {
-    Axios.get("https://localhost:44388/api/HomeWizardApi/Start").then(
-      response => {
-        this.$store.commit("offer/setOfferState", response.data);
-        //  this.test = response.data;
-      }
-    );
+
+  beforeRouteEnter(to, from, next) {
+    console.log("hova " + to.params.id);
+    next(vm => vm.setCurrentPageId(to.params.id));
+    // axios.get(`/api/products/${to.params.id}`).then(response => {
+    //   next(vm => vm.setData(response.data));
+    // });
   }
+  // created() {
+  //   Axios.get("https://localhost:44388/api/HomeWizardApi/Start").then(
+  //     response => {
+  //       this.$store.commit("offer/setOfferState", response.data);
+  //       //  this.test = response.data;
+  //     }
+  //   );
+  // }
 };
 </script>
 

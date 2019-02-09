@@ -11,8 +11,7 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: "/home/:id", component: HomeWizard },
-    { path: "/home", component: HomeWizard },
-    { path: "*", redirect: "/home" }
+    { path: "*", redirect: "/home/1" }
 ];
 const router = new VueRouter({ mode: 'history', routes: routes });
 new Vue({
