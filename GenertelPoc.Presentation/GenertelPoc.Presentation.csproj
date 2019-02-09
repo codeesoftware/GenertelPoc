@@ -15,10 +15,11 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
     <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
-    <Watch Include="**\*.cshtml"/>
+    <Watch Include="**\*.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GenertelPoc.Api\GenertelPoc.Api.csproj" />
     <ProjectReference Include="..\GenertelPoc.Common\GenertelPoc.Common.csproj" />
     <ProjectReference Include="..\GenertelPoc.Infrastructure\GenertelPoc.Infrastructure.csproj" />
     <ProjectReference Include="..\GenertelPoc.Service\GenertelPoc.Service.csproj" />

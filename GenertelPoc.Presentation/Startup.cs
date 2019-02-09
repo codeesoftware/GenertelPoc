@@ -1,10 +1,10 @@
 using GenertelPoc.Infrastructure.IOC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
 
 namespace GenertelPoc.Presentation
@@ -23,8 +23,9 @@ namespace GenertelPoc.Presentation
             services.AddMvc()
                  .AddControllersAsServices()
                  .AddControllersAsServices();
-               //  .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //  .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+          
             return AutofacInitializer.Initialize(services);
         }
 
@@ -41,7 +42,10 @@ namespace GenertelPoc.Presentation
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
+
+          
 
             app.UseStaticFiles();
 
