@@ -11,8 +11,7 @@ export default {
   name: "app",
   data() {
     return {
-      time: new Date().toString(),
-      users: this.$store.state.wizard.users
+      time: new Date().toString()
     };
   },
   methods: {

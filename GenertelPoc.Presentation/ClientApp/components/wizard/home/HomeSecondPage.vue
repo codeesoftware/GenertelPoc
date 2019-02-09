@@ -1,7 +1,7 @@
 <template>
   <div>
     <email-input></email-input>
-    <button class="btn btn-primary" @click="back()">Tovább</button>
+    <button class="btn btn-primary" @click="back()">Vissza</button>
     <button class="btn btn-primary" @click="next()">Tovább</button>
   </div>
 </template>

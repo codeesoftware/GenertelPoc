@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{this.$route.params.id }}</h3>
+    <h3>a{{this.getCurrentPageId}}</h3>
     <home-first-page :pageId="1"></home-first-page>
     <home-second-page :pageId="2"></home-second-page>
   </div>
@@ -19,20 +19,28 @@ export default {
   },
   data() {
     return {
-      wizardVM: null
+      // test: Object
     };
   },
   methods: {
-    setWizardVM(wizardVM) {
-      debugger;
-      this.wizardVM = wizardVM;
+    // setWizardVM(wizardVM) {
+    //   debugger;
+    //   this.wizardVM = wizardVM;
+    // }
+  },
+  computed: {
+    getCurrentPageId() {
+      console.log(this.$store.state.offer.offerState);
+      //return this.$store.getters["wizard/currentPageId"];
+      return this.$store.state.offer.offerState.currentPageId;
+      //return this.test.currentPageId;
     }
   },
-  mounted() {
+  created() {
     Axios.get("https://localhost:44388/api/HomeWizardApi/Start").then(
       response => {
-        console.log(response);
-        this.setWizardVM(response.data);
+        this.$store.commit("offer/setOfferState", response.data);
+        //  this.test = response.data;
       }
     );
   }

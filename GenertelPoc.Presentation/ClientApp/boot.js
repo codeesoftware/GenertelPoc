@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import App from './components/App.vue';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import store from './store';
+import store from './store/wizard.js';
 import ArchWizard from "./components/wizard/ArchWizard.vue"
 import HomeWizard from "./components/wizard/home/HomeWizard.vue"
 
