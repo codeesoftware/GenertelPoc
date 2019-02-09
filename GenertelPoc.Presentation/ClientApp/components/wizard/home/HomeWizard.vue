@@ -5,7 +5,7 @@
     <home-second-page v-if="this.currentPageId == 2" :pageId="2"></home-second-page>-->
     <div class="row">
       <div class="col">
-        <component v-bind:is="selectedComponent"></component>
+        <component v-bind:is="selectedPage"></component>
       </div>
     </div>
     <button class="btn btn-primary" @click="back()">Vissza</button>
@@ -26,8 +26,7 @@ export default {
   },
   data() {
     return {
-      currentPageId: Number,
-      selected: 1
+      currentPageId: Number
       // test: Object
     };
   },
@@ -36,10 +35,10 @@ export default {
       this.currentPageId = pageId;
     },
     back() {
-      this.$router.push(`/home/${--this.selected}`);
+      this.$router.push(`/home/${--this.currentPageId}`);
     },
     next() {
-      this.$router.push(`/home/${++this.selected}`);
+      this.$router.push(`/home/${++this.currentPageId}`);
     }
   },
   computed: {
@@ -49,16 +48,29 @@ export default {
       //   return this.$store.state.offer.offerState.currentPageId;
       return this.currentPageId;
     },
-    selectedComponent() {
-      return this.selected == 1 ? HomeFirstPage : HomeSecondPage;
+    selectedPage() {
+      return this.currentPageId == 1 ? HomeFirstPage : HomeSecondPage;
     }
   },
 
   beforeRouteEnter(to, from, next) {
     console.log("hova " + to.params.id);
-    next(vm => vm.setCurrentPageId(to.params.id));
+    // next(vm => vm.setCurrentPageId(to.params.id));
+
+    Axios.get("https://localhost:44388/api/HomeWizardApi/Start").then(
+      response => {
+        next(vm => {
+          vm.$store.commit("offer/setOfferState", response.data);
+          vm.setCurrentPageId(to.params.id);
+        });
+        //  this.test = response.data;
+      }
+    );
     // axios.get(`/api/products/${to.params.id}`).then(response => {
-    //   next(vm => vm.setData(response.data));
+    //   next(vm => {
+    //     vm.setData(response.data);
+    //     vm.setCurrentPageId(to.params.id);
+    //   });
     // });
   }
   // created() {

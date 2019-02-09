@@ -8,12 +8,6 @@
 import EmailInput from "../inputs/EmailInput.vue";
 
 export default {
-  // props: {
-  //   pageId: {
-  //     type: Number,
-  //     required: true
-  //   }
-  // },
   name: "home-second-page",
   components: {
     EmailInput
