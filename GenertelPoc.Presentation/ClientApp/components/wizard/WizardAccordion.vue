@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="container text-center">
     <div>
       <slot name="header"></slot>
     </div>
     <!-- <transition @enter="onEnter" @leave="onLeave"> -->
-    <div>
+    <div class="col-12">
       <slot name="body"></slot>
     </div>
     <!-- </transition> -->

@@ -9,8 +9,8 @@ import ArchWizard from "./components/wizard/ArchWizard.vue"
 Vue.use(VueRouter);
 
 const routes = [
-    { path: "/wizard", component: ArchWizard },
-    { path: "*", redirect: "/wizard" },
+    { path: "*", component: ArchWizard },
+    // { path: "*", redirect: "/wizard" },
 ];
 const router = new VueRouter({ mode: 'history', routes: routes });
 new Vue({

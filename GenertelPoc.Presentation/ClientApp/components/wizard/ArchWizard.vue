@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="text-center">
     <h2>Wizard</h2>
     <div class="container">
       <wizard-accordion>
         <span slot="header">Price</span>
-        <span slot="body">Price</span>
+        <home-wizard slot="body"></home-wizard>
       </wizard-accordion>
     </div>
   </div>
