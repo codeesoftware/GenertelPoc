@@ -6,9 +6,10 @@ const bundleOutputDir = './wwwroot/dist';
 module.exports = (env) => {
 
     return [{
-        mode:'development',
-        resolve: { extensions: [ '.js' ] },
+        mode: 'development',
+        resolve: { extensions: ['.js'] },
         entry: { 'genertel': './ClientApp/boot.js' },
+
         optimization: {
             splitChunks: {
                 cacheGroups: {
@@ -27,8 +28,10 @@ module.exports = (env) => {
         },
         module: {
             rules: [
-                { test: /\.vue$/, include: /ClientApp/, loader: 'vue-loader' },
-                { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
+                {
+                    test: /\.vue$/, include: /ClientApp/, loader: 'vue-loader'
+                },
+                { test: /\.css$/, use: ['style-loader', 'css-loader'] },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
             ]
         },

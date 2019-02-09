@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import WizardModule from './wizard/wizard';
+import WizardModule from './wizard';
 
 Vue.use(Vuex);
 

@@ -1,10 +1,7 @@
-{
-
-}
 export default {
     namespaced: true,
     state: {
-        users: [{ fullName:'Sandor Pall',userName:'sa'}]
+        users: [{ fullName: 'Pall Sandor 223', userName: 'sp' }]
     },
     getters: {
     },

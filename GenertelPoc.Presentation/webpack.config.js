@@ -7,7 +7,7 @@ const bundleOutputDir = './wwwroot/dist';
 module.exports = (env) => {
     return [{
         mode: 'production',
-        resolve: { extensions: ['.js'] },
+        //resolve: { extensions: ['.js'] },
         entry: { 'genertel': './ClientApp/boot.js' },
        
         optimization: {
