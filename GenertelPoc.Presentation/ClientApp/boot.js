@@ -5,12 +5,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import store from './store';
 import ArchWizard from "./components/wizard/ArchWizard.vue"
+import HomeWizard from "./components/wizard/home/HomeWizard.vue"
 
 Vue.use(VueRouter);
 
 const routes = [
-    { path: "*", component: ArchWizard },
-    // { path: "*", redirect: "/wizard" },
+    { path: "/home/:id", component: HomeWizard },
+    { path: "/home", component: HomeWizard },
+    { path: "*", redirect: "/home" }
 ];
 const router = new VueRouter({ mode: 'history', routes: routes });
 new Vue({
