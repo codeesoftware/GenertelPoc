@@ -32,7 +32,13 @@ namespace GenertelPoc.Api
                       .WithOrigins("http://localhost:56417");
                 });
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                  .AddJsonOptions(options =>
+                  {
+                      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                   //   options.SerializerSettings.TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All;
+                  })
+                  .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSwaggerGen(c =>
             {
@@ -50,7 +56,7 @@ namespace GenertelPoc.Api
             else
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            //    app.UseHsts();
+                //    app.UseHsts();
             }
             app.UseSwagger()
           .UseSwaggerUI(c =>

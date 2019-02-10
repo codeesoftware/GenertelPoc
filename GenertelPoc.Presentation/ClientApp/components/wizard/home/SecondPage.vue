@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{this.page}}
     <email-input></email-input>
   </div>
 </template>
@@ -8,18 +9,17 @@
 import EmailInput from "../inputs/EmailInput.vue";
 
 export default {
-  name: "home-second-page",
+  name: "second-page",
   components: {
     EmailInput
   },
-  methods: {
-    back() {
-      this.$router.push(`/home/1`);
-    },
-    next() {
-      this.$router.push(`/home/3`);
+  props: {
+    page: {
+      type: Number,
+      required: true
     }
-  }
+  },
+  methods: {}
 };
 </script>
 

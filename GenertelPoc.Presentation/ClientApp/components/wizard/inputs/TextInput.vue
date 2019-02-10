@@ -5,8 +5,8 @@
       <input
         type="text"
         class="form-control"
-        id="exampleInputText1"
-        aria-describedby="textHelp"
+        v-bind:value="value"
+        v-on:input="$emit('input', $event.target.value)"
         placeholder="Enter text"
       >
     </div>

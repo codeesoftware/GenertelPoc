@@ -4,9 +4,8 @@ using System.Text;
 
 namespace GenertelPoc.Common.ViewModels
 {
-    public class WizardViewModel
+   public  interface IPageViewModel
     {
-       public IEnumerable<IPageViewModel> Pages {get;set;}
-
+         int PageId { get; }
     }
 }

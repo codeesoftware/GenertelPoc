@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\Input.cs" />
+    <Compile Remove="ViewModels\PageViewModel.cs" />
+    <Compile Remove="ViewModels\TextInput.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
   </ItemGroup>
 

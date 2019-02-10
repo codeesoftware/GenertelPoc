@@ -4,13 +4,12 @@ import App from './components/App.vue';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import store from './store/wizard.js';
-import ArchWizard from "./components/wizard/ArchWizard.vue"
-import HomeWizard from "./components/wizard/home/HomeWizard.vue"
+import Wizard from "./components/wizard/home/Wizard.vue"
 
 Vue.use(VueRouter);
 
 const routes = [
-    { path: "/home/:id", component: HomeWizard },
+    { path: "/home/:id", component: Wizard },
     { path: "*", redirect: "/home/1" }
 ];
 const router = new VueRouter({ mode: 'history', routes: routes });

@@ -16,6 +16,14 @@ export default {
         setOfferState(state, offerState) {
             console.table('setOfferState');
             state.offerState = offerState;
+        },
+        setPageState(state, pageState, pageId) {
+            console.table('setPageState');
+            let page = state.offerState.pages.find(
+                page => page.pageId == pageId
+            );
+            page = pageState;
+            state.offerState[pageId] = page;
         }
     },
     actions: {
