@@ -20,14 +20,17 @@ export default {
         setPageState(state, pageState, pageId) {
             console.table('setPageState');
             // let page = state.offerState.pages.find(
-            //     page => page.pageId == pageId
+            //     page => page.pageId == 1
             // );
-            state.offerState.pages.push(pageState);
+            // console.log(page);
+            // page = pageState;
+            //state.offerState.pages.push(pageState);
 
             // state.offerState.pages = [
-            //     ...state.offerState.pages.filter(element => element.pageId !== pageId),
+            //     ...state.offerState.pages.filter(element => element.pageId !== 1),
             //     pageState
             // ];
+            state.offerState.pages[0].fullName = pageState.fullName;
             //state.offerState[pageId] = page;
         }
     },

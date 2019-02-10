@@ -44,13 +44,13 @@ export default {
       this.$router.push(`/home/${++this.currentPageId}`);
     },
     send() {
-      const offer = this.$store.offer;
-      Axios.post(`${baseUrl}/api/HomeWizardApi/End`, { offer });
+      const offer = this.$store.state.offer.offerState;
+      console.log(offer);
+      Axios.post(`${baseUrl}/api/HomeWizardApi/End`, offer);
     }
   },
   computed: {
     getCurrentPageId() {
-      console.log(this.$store.state.offer.offerState);
       return this.currentPageId;
     },
     selectedPage() {
