@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{this.page}}
+    {{this.pageId}}
     <text-input v-model="fullName"></text-input>
   </div>
 </template>
@@ -19,16 +19,17 @@ export default {
     };
   },
   props: {
-    page: {
+    pageId: {
       type: Number,
       required: true
     }
   },
   beforeDestroy() {
-    console.log("leave");
+    console.log("first");
     const fullName = this.fullName;
-    const pageId = this.page;
-    this.$store.commit("offer/setPageState", { fullName, pageId });
+    const pageId = this.pageId;
+    const pageState = { fullName };
+    this.$store.commit("offer/setPageState", { pageState, pageId });
   },
   methods: {}
 };

@@ -14,23 +14,6 @@ namespace GenertelPoc.Api.Controllers
         {
             var homeWizardViewModel = new WizardViewModel
             {
-                //CurrentPageId =1,
-                //Pages = new List<PageViewModel>()
-                //{
-                //    new PageViewModel{
-                //        PageId =1,
-                //        Inputs = new List<Input> {
-                //            new TextInput{ Name = "name"},
-                //        }
-                //    },
-                //      new PageViewModel{
-                //        PageId =2,
-                //        Inputs = new List<Input> {
-                //            new TextInput{ Name = "email"},
-                //        }
-                //    }
-                //}
-
                 Pages = new List<IPageViewModel>()
                 {
                     new FirstPageViewModel()

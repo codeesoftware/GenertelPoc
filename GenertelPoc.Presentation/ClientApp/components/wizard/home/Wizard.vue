@@ -1,11 +1,12 @@
 <template>
   <div>
     <h3>Jelenlegi oldal {{this.currentPageId}}</h3>
-    <home-first-page v-if="this.currentPageId == 1" :pageId="1"></home-first-page>
-    <home-second-page v-if="this.currentPageId == 2" :pageId="2"></home-second-page>
+    <!-- <first-page v-if="this.currentPageId == 1" :pageId="1"></first-page>
+    <second-page v-if="this.currentPageId == 2" :pageId="2"></second-page>
+    <third-page v-if="this.currentPageId == 3" :pageId="2"></third-page>-->
     <div class="row">
       <div class="col">
-        <component v-bind:is="selectedPage" :page="this.currentPageId"></component>
+        <component v-bind:is="selectedPage" :pageId="this.currentPageId"></component>
       </div>
     </div>
     <button class="btn btn-primary" @click="back()">Vissza</button>
@@ -17,6 +18,7 @@
 <script>
 import FirstPage from "./FirstPage.vue";
 import SecondPage from "./SecondPage.vue";
+import ThirdPage from "./ThirdPage.vue";
 import Axios from "axios";
 
 const baseUrl = "https://localhost:44388";
@@ -25,7 +27,8 @@ export default {
   name: "wizard",
   components: {
     FirstPage,
-    SecondPage
+    SecondPage,
+    ThirdPage
   },
   data() {
     return {
@@ -54,7 +57,8 @@ export default {
       return this.currentPageId;
     },
     selectedPage() {
-      return this.currentPageId == 1 ? FirstPage : SecondPage;
+      const pages = [FirstPage, SecondPage, ThirdPage];
+      return pages[this.currentPageId - 1]; //this.currentPageId == 1 ? FirstPage : SecondPage;
     }
   },
 

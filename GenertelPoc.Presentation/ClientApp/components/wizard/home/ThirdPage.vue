@@ -9,7 +9,7 @@
 import EmailInput from "../inputs/EmailInput.vue";
 
 export default {
-  name: "second-page",
+  name: "third-page",
   data() {
     return {
       email: ""
@@ -26,11 +26,10 @@ export default {
   },
   methods: {},
   beforeDestroy() {
-    console.log("second");
-    const pageId = this.pageId;
+    console.log("third");
     const email = this.email;
-    const pageState = { email };
-    this.$store.commit("offer/setPageState", { pageState, pageId });
+    const pageId = this.pageId;
+    this.$store.commit("offer/setPageState", { email, pageId });
   }
 };
 </script>

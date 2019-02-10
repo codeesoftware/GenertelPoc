@@ -5,8 +5,8 @@
       <input
         type="email"
         class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
+        v-bind:value="value"
+        v-on:input="$emit('input', $event.target.value)"
         placeholder="Enter email"
       >
       <small

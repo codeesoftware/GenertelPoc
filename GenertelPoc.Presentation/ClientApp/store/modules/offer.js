@@ -15,12 +15,10 @@ export default {
             console.table('setOfferState');
             state.offerState = offerState;
         },
-        setPageState(state, { fullName, pageId }) {
+        setPageState(state, { pageState, pageId }) {
             console.table('setPageState');
-            debugger;
-            console.table(state);
             let page = state.offerState.pages.find(
-                page => page.pageId == 1
+                page => page.pageId == pageId
             );
             // page = pageState;
             //state.offerState.pages.push(pageState);
@@ -29,14 +27,11 @@ export default {
             //     ...state.offerState.pages.filter(element => element.pageId !== 1),
             //     pageState
             // ];
-            console.log(fullName);
+            //  console.log(fullName);
             console.log(pageId);
-            console.log(page);
 
-            const object2 = Object.assign(page, { fullName });
-            console.log('he');
-            console.log(object2);
-            state.offerState.pages[0] = object2;
+            const object2 = Object.assign(page, pageState);
+            state.offerState.pages[pageId - 1] = object2;
             //state.offerState[pageId] = page;
         }
     },
