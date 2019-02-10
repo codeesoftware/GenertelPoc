@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{this.pageId}}
     <email-input v-model="email"></email-input>
   </div>
 </template>
@@ -26,7 +25,6 @@ export default {
   },
   methods: {},
   beforeDestroy() {
-    console.log("third");
     const email = this.email;
     const pageId = this.pageId;
     this.$store.commit("offer/setPageState", { email, pageId });

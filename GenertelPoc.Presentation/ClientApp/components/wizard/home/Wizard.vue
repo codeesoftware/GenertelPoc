@@ -1,9 +1,6 @@
 <template>
   <div>
-    <h3>Jelenlegi oldal {{this.currentPageId}}</h3>
-    <!-- <first-page v-if="this.currentPageId == 1" :pageId="1"></first-page>
-    <second-page v-if="this.currentPageId == 2" :pageId="2"></second-page>
-    <third-page v-if="this.currentPageId == 3" :pageId="2"></third-page>-->
+    <h3>{{this.currentPageId}}. oldal</h3>
     <div class="row">
       <div class="col">
         <component v-bind:is="selectedPage" :pageId="this.currentPageId"></component>
@@ -33,7 +30,6 @@ export default {
   data() {
     return {
       currentPageId: Number
-      // test: Object
     };
   },
   methods: {
@@ -48,7 +44,6 @@ export default {
     },
     send() {
       const offer = this.$store.state.offer.offerState;
-      console.log(offer);
       Axios.post(`${baseUrl}/api/HomeWizardApi/End`, offer);
     }
   },
@@ -58,7 +53,7 @@ export default {
     },
     selectedPage() {
       const pages = [FirstPage, SecondPage, ThirdPage];
-      return pages[this.currentPageId - 1]; //this.currentPageId == 1 ? FirstPage : SecondPage;
+      return pages[this.currentPageId - 1];
     }
   },
 

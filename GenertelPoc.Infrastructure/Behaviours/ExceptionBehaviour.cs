@@ -16,9 +16,9 @@ namespace GenertelPoc.Infrastructure.Behaviours
                 TResponse response = await next();
                 return response;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                throw;//todo
+                throw;
 
             }
         }

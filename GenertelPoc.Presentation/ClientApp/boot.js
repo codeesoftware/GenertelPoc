@@ -4,18 +4,15 @@ import App from './components/App.vue';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import store from './store/wizard.js';
-import FirstPage from './components/wizard/home/FirstPage.vue';
-import SecondPage from './components/wizard/home/SecondPage.vue';
 import Wizard from "./components/wizard/home/Wizard.vue"
+import VeeValidate from 'vee-validate';
 
 Vue.use(VueRouter);
+Vue.use(VeeValidate);
 
 const routes = [
     { path: "/home/:id", component: Wizard },
     { path: "*", redirect: "/home/1" },
-    // { path: "/home/1", component: FirstPage },
-    // { path: "/home/2", component: SecondPage },
-    // { path: "*", redirect: "/home/1" }
 ];
 const router = new VueRouter({ mode: 'history', routes: routes });
 new Vue({

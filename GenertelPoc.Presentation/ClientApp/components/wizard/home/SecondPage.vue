@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{this.pageId}}
     <email-input v-model="email"></email-input>
   </div>
 </template>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{this.pageId}}
     <text-input v-model="fullName"></text-input>
   </div>
 </template>
@@ -25,7 +24,6 @@ export default {
     }
   },
   beforeDestroy() {
-    console.log("first");
     const fullName = this.fullName;
     const pageId = this.pageId;
     const pageState = { fullName };

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,12 +12,13 @@ namespace GenertelPoc.Infrastructure.Behaviours
     class RequestPerformancePipelineBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 
     {
+        private readonly ILogger<TRequest> logger;
+        private Stopwatch Timer { get; }
 
-        public Stopwatch Timer { get; }
-
-        public RequestPerformancePipelineBehaviour()
+        public RequestPerformancePipelineBehaviour(ILogger<TRequest> logger)
         {
             this.Timer = new Stopwatch();
+            this.logger = logger;
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
@@ -26,7 +28,7 @@ namespace GenertelPoc.Infrastructure.Behaviours
             Timer.Stop();
 
             string name = typeof(TRequest).Name;
-
+            logger.LogInformation($"{name} {Timer.ElapsedMilliseconds} ms");
             return response;
         }
     }

@@ -25,19 +25,14 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-middleware": "^3.5.2",
     "webpack-dev-server": "^3.1.14",
-    "webpack-hot-middleware": "^2.24.3",
-    "chai": "^4.2.0",
-    "jsdom": "^13.2.0",
-    "jsdom-global": "^3.0.2",
-    "mocha": "^5.2.0",
-    "mocha-webpack": "^1.1.0",
-    "nyc": "^13.2.0"
+    "webpack-hot-middleware": "^2.24.3"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.7",
+    "vee-validate": "^2.1.7",
     "vuex": "^3.1.0"
   }
 }
