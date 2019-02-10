@@ -1,10 +1,7 @@
 ﻿using GenertelPoc.Common.ViewModels;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace GenertelPoc.Service.Commands
+namespace GenertelPoc.Service.Queries
 {
     public class GetWizardQuery: IRequest<WizardViewModel>
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GenertelPoc.Service.Commands.Handlers
+namespace GenertelPoc.Service.Queries.Handlers
 {
     class GetWizardQueryHandler : IRequestHandler<GetWizardQuery, WizardViewModel>
     {

@@ -1,9 +1,8 @@
 ﻿using GenertelPoc.Common.ViewModels;
-using GenertelPoc.Common.ViewModels.Home;
 using GenertelPoc.Service.Commands;
+using GenertelPoc.Service.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GenertelPoc.Api.Controllers
@@ -32,8 +31,9 @@ namespace GenertelPoc.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult End([FromBody] WizardViewModel wizardViewModel)
+        public async Task<ActionResult> End([FromBody] WizardViewModel wizardViewModel)
         {
+             await mediator.Send(new CreateOfferCommand(wizardViewModel));
 
             return NoContent();
         }

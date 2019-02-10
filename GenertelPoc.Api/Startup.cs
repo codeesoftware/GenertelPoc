@@ -1,4 +1,6 @@
-﻿using GenertelPoc.Infrastructure.IOC;
+﻿using FluentValidation.AspNetCore;
+using GenertelPoc.Infrastructure.IOC;
+using GenertelPoc.Infrastructure.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +20,6 @@ namespace GenertelPoc.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
 
@@ -35,13 +36,14 @@ namespace GenertelPoc.Api
                 });
             });
             services.AddMvc()
-                 .AddControllersAsServices()
-                  .AddJsonOptions(options =>
+                .AddControllersAsServices()
+                .AddJsonOptions(options =>
                   {
                       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                     options.SerializerSettings.TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto;
+                      options.SerializerSettings.TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto;
                   })
-                  .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                  .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                  .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateOfferCommandValidator>());
 
             services.AddSwaggerGen(c =>
             {
@@ -51,7 +53,6 @@ namespace GenertelPoc.Api
             return AutofacInitializer.Initialize(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

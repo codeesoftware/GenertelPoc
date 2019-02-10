@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Queries\Handlers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GenertelPoc.Common\GenertelPoc.Common.csproj" />
     <ProjectReference Include="..\GenertelPoc.Repository\GenertelPoc.Repository.csproj" />
   </ItemGroup>
