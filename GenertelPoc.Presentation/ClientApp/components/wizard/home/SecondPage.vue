@@ -25,7 +25,6 @@ export default {
   },
   methods: {},
   beforeDestroy() {
-    console.log("second");
     const pageId = this.pageId;
     const email = this.email;
     const pageState = { email };

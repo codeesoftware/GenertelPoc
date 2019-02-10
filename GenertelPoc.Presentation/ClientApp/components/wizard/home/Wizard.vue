@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <h3>{{this.currentPageId}}. oldal</h3>
-    <div class="row">
+  <div class="ml-2">
+    <div class="text-center">{{this.currentPageId}}. oldal</div>
+    <div class="row page-header">
       <div class="col">
         <component v-bind:is="selectedPage" :pageId="this.currentPageId"></component>
       </div>
     </div>
-    <button class="btn btn-primary" @click="back()">Vissza</button>
-    <button class="btn btn-primary" @click="next()">Tovább</button>
-    <button class="btn btn-danger" @click="send()">Küld</button>
+    <div>
+      <button type="button" class="btn btn-primary" @click="next()" v-show="!isLastPage">Tovább</button>
+      <button type="button" class="btn btn-danger" @click="back()" v-show="!isFirstPage">Vissza</button>
+      <button type="button" class="btn btn-success" @click="send()" v-show="isLastPage">Küld</button>
+    </div>
   </div>
 </template>
 
 <script>
 import FirstPage from "./FirstPage.vue";
 import SecondPage from "./SecondPage.vue";
-import ThirdPage from "./ThirdPage.vue";
+import ThankYouPage from "./ThankYouPage.vue";
 import Axios from "axios";
 
 const baseUrl = "https://localhost:44388";
@@ -25,7 +27,7 @@ export default {
   components: {
     FirstPage,
     SecondPage,
-    ThirdPage
+    ThankYouPage
   },
   data() {
     return {
@@ -43,8 +45,10 @@ export default {
       this.$router.push(`/home/${++this.currentPageId}`);
     },
     send() {
+      this.$router.push(`/home/${++this.currentPageId}`);
       const offer = this.$store.state.offer.offerState;
       Axios.post(`${baseUrl}/api/HomeWizardApi/End`, offer);
+      console.table(offer);
     }
   },
   computed: {
@@ -52,13 +56,18 @@ export default {
       return this.currentPageId;
     },
     selectedPage() {
-      const pages = [FirstPage, SecondPage, ThirdPage];
+      const pages = [FirstPage, SecondPage, ThankYouPage];
       return pages[this.currentPageId - 1];
+    },
+    isFirstPage() {
+      return this.currentPageId <= 1;
+    },
+    isLastPage() {
+      return 2 <= this.currentPageId;
     }
   },
 
   beforeRouteEnter(to, from, next) {
-    console.log("hova " + to.params.id);
     Axios.get(`${baseUrl}/api/HomeWizardApi/Start`).then(response => {
       next(vm => {
         vm.$store.commit("offer/setOfferState", response.data);
