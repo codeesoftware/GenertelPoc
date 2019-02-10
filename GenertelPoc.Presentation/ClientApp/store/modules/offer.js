@@ -19,11 +19,16 @@ export default {
         },
         setPageState(state, pageState, pageId) {
             console.table('setPageState');
-            let page = state.offerState.pages.find(
-                page => page.pageId == pageId
-            );
-            page = pageState;
-            state.offerState[pageId] = page;
+            // let page = state.offerState.pages.find(
+            //     page => page.pageId == pageId
+            // );
+            state.offerState.pages.push(pageState);
+
+            // state.offerState.pages = [
+            //     ...state.offerState.pages.filter(element => element.pageId !== pageId),
+            //     pageState
+            // ];
+            //state.offerState[pageId] = page;
         }
     },
     actions: {

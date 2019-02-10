@@ -1,8 +1,8 @@
 <template>
   <div>
     <h3>Jelenlegi oldal {{this.currentPageId}}</h3>
-    <!-- <home-first-page v-if="this.currentPageId == 1" :pageId="1"></home-first-page>
-    <home-second-page v-if="this.currentPageId == 2" :pageId="2"></home-second-page>-->
+    <home-first-page v-if="this.currentPageId == 1" :pageId="1"></home-first-page>
+    <home-second-page v-if="this.currentPageId == 2" :pageId="2"></home-second-page>
     <div class="row">
       <div class="col">
         <component v-bind:is="selectedPage" :page="this.currentPageId"></component>

@@ -24,9 +24,10 @@ export default {
       required: true
     }
   },
-  beforeRouteLeave(to, from, next) {
-    const data = this.fullName;
-    this.$store.commit("offer/setPageState", { data }, this.page - 1);
+  beforeDestroy() {
+    console.log("leave");
+    const fullName = this.fullName;
+    this.$store.commit("offer/setPageState", { fullName }, 1);
   },
   methods: {}
 };

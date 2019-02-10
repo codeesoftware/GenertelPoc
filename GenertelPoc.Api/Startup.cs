@@ -36,7 +36,7 @@ namespace GenertelPoc.Api
                   .AddJsonOptions(options =>
                   {
                       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                   //   options.SerializerSettings.TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All;
+                      options.SerializerSettings.TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto;
                   })
                   .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
