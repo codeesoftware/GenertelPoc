@@ -6,6 +6,16 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Queries\Handlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GenertelPoc.Common\GenertelPoc.Common.csproj" />
+    <ProjectReference Include="..\GenertelPoc.Repository\GenertelPoc.Repository.csproj" />
   </ItemGroup>
 
 </Project>

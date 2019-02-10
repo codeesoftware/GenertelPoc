@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using MediatR.Extensions.Autofac.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
 using System;
@@ -11,6 +12,7 @@ namespace GenertelPoc.Infrastructure.IOC
 {
     public static class AutofacInitializer
     {
+        private const string ApplicationName = "genertelpoc";
 
         public static IServiceProvider Initialize(IServiceCollection services)
         {
@@ -18,8 +20,8 @@ namespace GenertelPoc.Infrastructure.IOC
             Assembly[] assemblies = GetAssemblies();
             //services.AddAutoMapper(assemblies.First(a => a.GetName().Name.ToLower().Contains("contract")));
             builder.Populate(services);
-          //  Assembly medatrAssembly = assemblies.First(a => a.GetName().Name.ToLower().Contains("application"));
-            //builder.AddMediatR(medatrAssembly);
+            Assembly medatrAssembly = assemblies.First(a => a.GetName().Name.ToLower().Contains("service"));
+            builder.AddMediatR(medatrAssembly);
             builder.RegisterAssemblyModules(assemblies);
             return new AutofacServiceProvider(builder.Build());
         }
@@ -32,7 +34,7 @@ namespace GenertelPoc.Infrastructure.IOC
             IReadOnlyList<CompilationLibrary> dependencies = DependencyContext.Default.CompileLibraries;
             foreach (CompilationLibrary library in dependencies)
             {
-                if (library.Name.ToLower().Contains("beezie"))
+                if (library.Name.ToLower().Contains(ApplicationName))
                 {
                     var assembly = Assembly.Load(new AssemblyName(library.Name));
                     assemblies.Add(assembly);

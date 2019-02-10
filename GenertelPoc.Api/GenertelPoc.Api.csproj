@@ -14,6 +14,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GenertelPoc.Common\GenertelPoc.Common.csproj" />
+    <ProjectReference Include="..\GenertelPoc.Infrastructure\GenertelPoc.Infrastructure.csproj" />
+    <ProjectReference Include="..\GenertelPoc.Service\GenertelPoc.Service.csproj" />
   </ItemGroup>
 
 </Project>

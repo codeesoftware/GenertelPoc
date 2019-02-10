@@ -1,7 +1,10 @@
 ﻿using GenertelPoc.Common.ViewModels;
 using GenertelPoc.Common.ViewModels.Home;
+using GenertelPoc.Service.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GenertelPoc.Api.Controllers
 {
@@ -9,19 +12,22 @@ namespace GenertelPoc.Api.Controllers
     [ApiController]
     public class HomeWizardApiController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<WizardViewModel> Start()
+        private readonly IMediator mediator;
+
+        public HomeWizardApiController(IMediator mediator)
         {
-            var homeWizardViewModel = new WizardViewModel
-            {
-                Pages = new List<IPageViewModel>()
-                {
-                    new FirstPageViewModel()
-                    ,
-                      new SecondPageViewModel()
-                }
-            };
-            return Ok(homeWizardViewModel);
+            this.mediator = mediator;
+        }
+        public HomeWizardApiController()
+        {
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<WizardViewModel>> Start()
+        {
+            WizardViewModel vm = await mediator.Send(new GetWizardQuery());
+            return Ok(vm);
         }
 
 
