@@ -4,12 +4,10 @@ export default {
         offerState: Object
     },
     // getters: {
-    //     currentPageId: state => {
-    //         console.table('currentPageId');
-    //         // console.log(state);
-    //         // console.log(state.wizard);
-    //         // console.log(state.wizard.currentPageId);
-    //         return state.offerState.currentPageId || 0;
+    //     getPageByPageId: (state) => (pageId) => {
+    //         return state.offerState.pages.find(
+    //             page => page.pageId == 1
+    //         );
     //     }
     // },
     mutations: {
@@ -17,12 +15,13 @@ export default {
             console.table('setOfferState');
             state.offerState = offerState;
         },
-        setPageState(state, pageState, pageId) {
+        setPageState(state, { fullName, pageId }) {
             console.table('setPageState');
-            // let page = state.offerState.pages.find(
-            //     page => page.pageId == 1
-            // );
-            // console.log(page);
+            debugger;
+            console.table(state);
+            let page = state.offerState.pages.find(
+                page => page.pageId == 1
+            );
             // page = pageState;
             //state.offerState.pages.push(pageState);
 
@@ -30,9 +29,11 @@ export default {
             //     ...state.offerState.pages.filter(element => element.pageId !== 1),
             //     pageState
             // ];
-            console.log(pageState);
+            console.log(fullName);
+            console.log(pageId);
+            console.log(page);
 
-            const object2 = Object.assign(state.offerState.pages[0], pageState);
+            const object2 = Object.assign(page, { fullName });
             console.log('he');
             console.log(object2);
             state.offerState.pages[0] = object2;

@@ -27,7 +27,8 @@ export default {
   beforeDestroy() {
     console.log("leave");
     const fullName = this.fullName;
-    this.$store.commit("offer/setPageState", { fullName }, 1);
+    const pageId = this.page;
+    this.$store.commit("offer/setPageState", { fullName, pageId });
   },
   methods: {}
 };
