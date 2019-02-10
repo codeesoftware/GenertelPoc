@@ -20,19 +20,8 @@ export default {
             let page = state.offerState.pages.find(
                 page => page.pageId == pageId
             );
-            // page = pageState;
-            //state.offerState.pages.push(pageState);
-
-            // state.offerState.pages = [
-            //     ...state.offerState.pages.filter(element => element.pageId !== 1),
-            //     pageState
-            // ];
-            //  console.log(fullName);
             console.log(pageId);
-
-            const object2 = Object.assign(page, pageState);
-            state.offerState.pages[pageId - 1] = object2;
-            //state.offerState[pageId] = page;
+            page = Object.assign(page, pageState);
         }
     },
     actions: {
