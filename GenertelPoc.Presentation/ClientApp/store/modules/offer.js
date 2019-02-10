@@ -30,7 +30,12 @@ export default {
             //     ...state.offerState.pages.filter(element => element.pageId !== 1),
             //     pageState
             // ];
-            state.offerState.pages[0].fullName = pageState.fullName;
+            console.log(pageState);
+
+            const object2 = Object.assign(state.offerState.pages[0], pageState);
+            console.log('he');
+            console.log(object2);
+            state.offerState.pages[0] = object2;
             //state.offerState[pageId] = page;
         }
     },
