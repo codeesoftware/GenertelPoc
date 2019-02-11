@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-group">
-      <label for="exampleInputText1">Text</label>
+      <label for="textInput">Text</label>
       <input
         type="text"
         v-validate="'required|min:3'"
@@ -10,7 +10,7 @@
         v-on:input="$emit('input', $event.target.value)"
         placeholder="Enter text"
       >
-      <span>{{ errors.first('textInput') }}</span>
+      <span class="badge badge-danger">{{ errors.first('textInput') }}</span>
     </div>
   </div>
 </template>
