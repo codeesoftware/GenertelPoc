@@ -1,13 +1,9 @@
-import { Validator } from 'vee-validate';
-
+import { Validator, Rules } from 'vee-validate';
 Validator.extend('VAL_100', {
     getMessage: field => 'Kérem, ezt a mezőt feltétlenül töltse ki!',
     validate: (input, args) => {
-        if (input.length > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        console.log(Rules);
+        return Rules.required.validate(input);
     }
 });
 Validator.extend('VAL_103', {
@@ -20,7 +16,7 @@ Validator.extend('VAL_103', {
 Validator.extend('VAL_175', {
     getMessage: field => 'Nem megfelelő korcsoport!',
     validate: (input, args) => {
-        return 25 <= input && input <= 55;
+        return Rules.between.validate(input, { min: 25, max: 55 });
     }
 });
 
