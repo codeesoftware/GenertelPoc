@@ -4,7 +4,7 @@
       <label for="textInput">Text</label>
       <input
         type="text"
-        v-validate="'required|betweenke:10,20'"
+        v-validate.continues="'VAL_100'"
         name="textInput"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
