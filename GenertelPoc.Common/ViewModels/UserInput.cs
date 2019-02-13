@@ -8,7 +8,7 @@ namespace GenertelPoc.Common.ViewModels
     {
         public TValueType Value { get; set; }
 
-        public IEnumerable<string> Validations { get; }
+        public IEnumerable<string> Validations { get; set; }
         public UserInput(TValueType value, params string[] validations)
         {
             Value = value;
@@ -16,6 +16,10 @@ namespace GenertelPoc.Common.ViewModels
         }
 
         public UserInput(params string[] validations) : this(default(TValueType), validations)
+        {
+        }
+
+        public UserInput() : this(default(TValueType))
         {
         }
     }

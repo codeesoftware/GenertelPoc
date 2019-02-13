@@ -1,9 +1,9 @@
 <template>
   <div>
-    <text-input
+    <input
       v-model="pageViewModel.fullName.value"
       :validations="Concat(pageViewModel.fullName.validations.$values)"
-    ></text-input>
+    ></input>
   </div>
 </template>
 
