@@ -4,7 +4,7 @@
       <label for="textInput">Text</label>
       <input
         type="text"
-        v-validate.continues="'VAL_100'"
+        v-validate.continues="`${validations}`"
         name="textInput"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
@@ -17,7 +17,16 @@
 
 <script>
 export default {
-  name: "text-input"
+  name: "text-input",
+  props: {
+    validations: {
+      type: String,
+      required: false
+    }
+  }
+  // beforeCreate() {
+  //   this.validations = "VAL_100";
+  // }
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <text-input v-model="pageViewModel.fullName"></text-input>
+    <text-input v-model="pageViewModel.fullName.value" validations="VAL_100"></text-input>
   </div>
 </template>
 
