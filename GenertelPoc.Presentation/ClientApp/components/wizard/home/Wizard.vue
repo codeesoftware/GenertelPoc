@@ -24,7 +24,7 @@ import FirstPage from "./FirstPage.vue";
 import SecondPage from "./SecondPage.vue";
 import ThankYouPage from "./ThankYouPage.vue";
 import Axios from "axios";
-import Validator from "../../validators/validator.js";
+import Validator from "../../scripts/validator.js";
 
 const baseUrl = "https://localhost:44388";
 

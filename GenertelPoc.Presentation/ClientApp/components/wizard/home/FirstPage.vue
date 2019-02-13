@@ -1,6 +1,9 @@
 <template>
   <div>
-    <text-input v-model="pageViewModel.fullName.value" validations="VAL_100"></text-input>
+    <text-input
+      v-model="pageViewModel.fullName.value"
+      :validations="Concat(pageViewModel.fullName.validations.$values)"
+    ></text-input>
   </div>
 </template>
 
@@ -23,6 +26,13 @@ export default {
   mounted() {
     console.log("mounted"); // {x:1}
     console.log(this.pageViewModel); // {x:1}
+  },
+  methods: {
+    Concat(list) {
+      console.log("Concat");
+      console.log(list);
+      return _.join(list, "|");
+    }
   }
 };
 </script>
