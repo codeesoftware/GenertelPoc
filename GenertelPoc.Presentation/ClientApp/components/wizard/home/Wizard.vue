@@ -41,17 +41,6 @@ export default {
     };
   },
   methods: {
-    // setCurrentPageId(pageId) {
-    //   console.log("setCurrentPageId");
-    //   console.log(pageId);
-    //   this.currentPageId = pageId;
-    // },
-    // setViewModel(viewModel) {
-    //   console.log("setViewModel");
-    //   console.table(viewModel);
-    //   this.viewModel = viewModel;
-    // },
-
     back() {
       this.$router.push(`/home/${--this.currentPageId}`);
     },
@@ -59,19 +48,14 @@ export default {
       this.$router.push(`/home/${++this.currentPageId}`);
     },
     send() {
+      //    const offer = this.$store.state.offer.offerState;
+      Axios.post(`${baseUrl}/api/HomeWizardApi/End`, this.viewModel);
       this.$router.push(`/home/${++this.currentPageId}`);
-      const offer = this.$store.state.offer.offerState;
-      Axios.post(`${baseUrl}/api/HomeWizardApi/End`, offer);
     },
     getPageViewModel(pageId) {
-      console.log("getPageViewModel");
-      console.log(this.viewModel);
-      console.log(pageId);
       let currentPageViewModel = this.viewModel.pages.find(
         p => p.pageId === pageId
       );
-      console.log("currentPageViewModel");
-      console.log(currentPageViewModel);
       return this.isLoaded ? currentPageViewModel : null;
     }
   },
@@ -99,10 +83,6 @@ export default {
       next(vm => {
         vm.currentPageId = Number.parseInt(to.params.id);
         vm.viewModel = response.data;
-        // vm.setCurrentPageId(to.params.id);
-        // vm.setViewModel(response.data);
-        console.log("got it");
-        // vm.$store.commit("offer/setOfferState", response.data);
       });
     });
   }
