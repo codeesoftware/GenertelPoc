@@ -4,7 +4,7 @@
       <label for="textInput">Text</label>
       <input
         type="text"
-        v-validate="'required|min:3'"
+        v-validate="'required|sandor'"
         name="textInput"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
