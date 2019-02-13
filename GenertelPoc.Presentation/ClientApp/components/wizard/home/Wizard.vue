@@ -1,9 +1,14 @@
 <template>
   <div class="ml-2">
-    <div class="text-center">{{this.currentPageId}}. oldal</div>
+    {{currentPageId}}
+    <div class="text-center">{{currentPageId}}. oldal</div>
     <div class="row page-header">
       <div class="col">
-        <component v-bind:is="selectedPage" :pageId="this.currentPageId"></component>
+        <component
+          v-bind:is="selectedPage"
+          v-bind:pageViewModel="getPageViewModel(currentPageId)"
+          v-if="isLoaded"
+        ></component>
       </div>
     </div>
     <div>
@@ -31,13 +36,22 @@ export default {
   },
   data() {
     return {
-      currentPageId: Number
+      currentPageId: Number,
+      viewModel: null
     };
   },
   methods: {
-    setCurrentPageId(pageId) {
-      this.currentPageId = pageId;
-    },
+    // setCurrentPageId(pageId) {
+    //   console.log("setCurrentPageId");
+    //   console.log(pageId);
+    //   this.currentPageId = pageId;
+    // },
+    // setViewModel(viewModel) {
+    //   console.log("setViewModel");
+    //   console.table(viewModel);
+    //   this.viewModel = viewModel;
+    // },
+
     back() {
       this.$router.push(`/home/${--this.currentPageId}`);
     },
@@ -48,13 +62,20 @@ export default {
       this.$router.push(`/home/${++this.currentPageId}`);
       const offer = this.$store.state.offer.offerState;
       Axios.post(`${baseUrl}/api/HomeWizardApi/End`, offer);
-      console.table(offer);
+    },
+    getPageViewModel(pageId) {
+      console.log("getPageViewModel");
+      console.log(this.viewModel);
+      console.log(pageId);
+      let currentPageViewModel = this.viewModel.pages.find(
+        p => p.pageId === pageId
+      );
+      console.log("currentPageViewModel");
+      console.log(currentPageViewModel);
+      return this.isLoaded ? currentPageViewModel : null;
     }
   },
   computed: {
-    getCurrentPageId() {
-      return this.currentPageId;
-    },
     selectedPage() {
       const pages = [FirstPage, SecondPage, ThankYouPage];
       return pages[this.currentPageId - 1];
@@ -64,14 +85,24 @@ export default {
     },
     isLastPage() {
       return 2 <= this.currentPageId;
+    },
+    isLoaded() {
+      if (this.viewModel) {
+        return true;
+      }
+      return false;
     }
   },
 
   beforeRouteEnter(to, from, next) {
     Axios.get(`${baseUrl}/api/HomeWizardApi/Start`).then(response => {
       next(vm => {
-        vm.$store.commit("offer/setOfferState", response.data);
-        vm.setCurrentPageId(to.params.id);
+        vm.currentPageId = Number.parseInt(to.params.id);
+        vm.viewModel = response.data;
+        // vm.setCurrentPageId(to.params.id);
+        // vm.setViewModel(response.data);
+        console.log("got it");
+        // vm.$store.commit("offer/setOfferState", response.data);
       });
     });
   }

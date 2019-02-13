@@ -1,6 +1,6 @@
 <template>
   <div>
-    <text-input v-model="fullName"></text-input>
+    <text-input v-model="pageViewModel.fullName"></text-input>
   </div>
 </template>
 
@@ -12,24 +12,18 @@ export default {
   components: {
     TextInput
   },
-  data() {
-    return {
-      fullName: ""
-    };
-  },
+
   props: {
-    pageId: {
-      type: Number,
+    pageViewModel: {
+      type: Object,
       required: true
     }
   },
-  beforeDestroy() {
-    const fullName = this.fullName;
-    const pageId = this.pageId;
-    const pageState = { fullName };
-    this.$store.commit("offer/setPageState", { pageState, pageId });
-  },
-  methods: {}
+
+  mounted() {
+    console.log("mounted"); // {x:1}
+    console.log(this.pageViewModel); // {x:1}
+  }
 };
 </script>
 

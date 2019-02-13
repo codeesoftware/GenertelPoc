@@ -1,6 +1,6 @@
 <template>
   <div>
-    <email-input v-model="email"></email-input>
+    <email-input v-model="pageViewModel.email"></email-input>
   </div>
 </template>
 
@@ -9,26 +9,19 @@ import EmailInput from "../inputs/EmailInput.vue";
 
 export default {
   name: "second-page",
-  data() {
-    return {
-      email: ""
-    };
-  },
+
   components: {
     EmailInput
   },
   props: {
-    pageId: {
-      type: Number,
+    pageViewModel: {
+      type: Object,
       required: true
     }
   },
-  methods: {},
-  beforeDestroy() {
-    const pageId = this.pageId;
-    const email = this.email;
-    const pageState = { email };
-    this.$store.commit("offer/setPageState", { pageState, pageId });
+  mounted() {
+    console.log("mounted"); // {x:1}
+    console.log(this.pageViewModel); // {x:1}
   }
 };
 </script>
