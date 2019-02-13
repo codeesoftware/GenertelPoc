@@ -24,14 +24,8 @@ export default {
     }
   },
 
-  mounted() {
-    console.log("mounted"); // {x:1}
-    console.log(this.pageViewModel); // {x:1}
-  },
   methods: {
     Concat(list) {
-      console.log("Concat");
-      console.log(list);
       return _.join(list, "|");
     }
   }

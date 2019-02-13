@@ -4,11 +4,10 @@
       <label for="textInput">Text</label>
       <input
         type="text"
-        v-validate.continues="`${validations}`"
+        v-validate="`${validations}`"
         name="textInput"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
-        :value="defaultText"
       >
       <span class="badge badge-danger">{{ errors.first('textInput') }}</span>
     </div>

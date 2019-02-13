@@ -13,6 +13,8 @@ Validator.extend('VAL_100', {
 Validator.extend('VAL_103', {
     getMessage: field => 'Kérjük, adja meg  a teljes nevet!',
     validate: (input, args) => {
+        console.log("VAL_103");
+        console.log(input);
         return input.indexOf(' ') !== -1;
     }
 });
