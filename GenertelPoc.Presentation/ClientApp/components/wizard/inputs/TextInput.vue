@@ -8,7 +8,7 @@
         name="textInput"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
-        placeholder="Enter text"
+        :value="defaultText"
       >
       <span class="badge badge-danger">{{ errors.first('textInput') }}</span>
     </div>
@@ -20,6 +20,10 @@ export default {
   name: "text-input",
   props: {
     validations: {
+      type: String,
+      required: false
+    },
+    defaultText: {
       type: String,
       required: false
     }
