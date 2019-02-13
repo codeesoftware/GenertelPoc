@@ -8,6 +8,7 @@
         name="textInput"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
+        :value="property.value"
       >
       <span class="badge badge-danger">{{ errors.first('textInput') }}</span>
     </div>
@@ -18,13 +19,14 @@
 export default {
   name: "text-input",
   props: {
-    validations: {
-      type: String,
-      required: false
-    },
-    defaultText: {
-      type: String,
-      required: false
+    property: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    validations() {
+      return _.join(this.property.validations.$values, "|");
     }
   }
   // beforeCreate() {

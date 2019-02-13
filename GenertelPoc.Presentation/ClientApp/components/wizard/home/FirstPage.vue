@@ -1,10 +1,6 @@
 <template>
   <div>
-    <text-input
-      v-model="pageViewModel.fullName.value"
-      :defaultText="pageViewModel.fullName.value"
-      :validations="Concat(pageViewModel.fullName.validations.$values)"
-    ></text-input>
+    <text-input v-model="pageViewModel.fullName.value" :property="pageViewModel.fullName"></text-input>
   </div>
 </template>
 
