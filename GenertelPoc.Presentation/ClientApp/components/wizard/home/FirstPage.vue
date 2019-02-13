@@ -1,6 +1,7 @@
 <template>
   <div>
     <text-input v-model="pageViewModel.fullName.value" :property="pageViewModel.fullName"></text-input>
+    <text-input v-model="pageViewModel.age.value" :property="pageViewModel.age"></text-input>
   </div>
 </template>
 
@@ -17,12 +18,6 @@ export default {
     pageViewModel: {
       type: Object,
       required: true
-    }
-  },
-
-  methods: {
-    Concat(list) {
-      return _.join(list, "|");
     }
   }
 };

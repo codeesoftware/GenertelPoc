@@ -13,9 +13,14 @@ Validator.extend('VAL_100', {
 Validator.extend('VAL_103', {
     getMessage: field => 'Kérjük, adja meg  a teljes nevet!',
     validate: (input, args) => {
-        console.log("VAL_103");
-        console.log(input);
         return input.indexOf(' ') !== -1;
+    }
+});
+
+Validator.extend('VAL_175', {
+    getMessage: field => 'Nem megfelelő korcsoport!',
+    validate: (input, args) => {
+        return 25 <= input && input <= 55;
     }
 });
 

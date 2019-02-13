@@ -6,6 +6,7 @@ namespace GenertelPoc.Common.ViewModels.Home
     {
         [Required]
         public UserInput<string> FullName { get; set; }
+        public UserInput<int> Age { get; set; }
         public int PageId => 1;
     }
 }
