@@ -10,6 +10,7 @@ namespace GenertelPoc.Service.Queries.Handlers
     class GetWizardQueryHandler : IRequestHandler<GetWizardQuery, WizardViewModel>
     {
         const string VAL_100 = "VAL_100";
+        const string VAL_103 = "VAL_103";
 
         public async Task<WizardViewModel> Handle(GetWizardQuery request, CancellationToken cancellationToken)
         {
@@ -18,7 +19,7 @@ namespace GenertelPoc.Service.Queries.Handlers
                 Pages = new List<IPageViewModel>()
                 {
                     new FirstPageViewModel{
-                        FullName = new UserInput<string>("sandor",VAL_100)
+                        FullName = new UserInput<string>("sandor",VAL_100,VAL_103)
                     }
                     ,
                       new SecondPageViewModel()

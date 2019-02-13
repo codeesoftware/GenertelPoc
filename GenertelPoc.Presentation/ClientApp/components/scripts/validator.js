@@ -10,7 +10,12 @@ Validator.extend('VAL_100', {
         }
     }
 });
-
+Validator.extend('VAL_103', {
+    getMessage: field => 'Kérjük, adja meg  a teljes nevet!',
+    validate: (input, args) => {
+        return input.indexOf(' ') !== -1;
+    }
+});
 
 // const isBetween = (value, { min, max } = {}) => {
 
