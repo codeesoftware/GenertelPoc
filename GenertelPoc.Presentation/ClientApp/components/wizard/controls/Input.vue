@@ -28,10 +28,6 @@ export default {
     property: {
       type: Object,
       required: true
-    },
-    label: {
-      type: "",
-      required: false
     }
   },
   computed: {
