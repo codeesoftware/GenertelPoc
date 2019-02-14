@@ -2,13 +2,12 @@
   <div>
     {{errors}}
     <!-- <own-input v-model="pageViewModel.email.value" :property="pageViewModel.email"></own-input> -->
-    <!-- <own-input
+    <own-input
       v-model="pageViewModel.password.value"
       :property="pageViewModel.password"
-      label="password"
-      ref="password"
-    ></own-input>-->
-    <input v-model="password" v-validate="'isBigger:confirmation'" type="password">
+      v-validate="'confirmed:confirmation'"
+    ></own-input>
+    <!-- <input v-model="password" v-validate="'isBigger:confirmation'" type="password"> -->
     <input v-model="password_confirm" name="password_confirm" type="password" ref="confirmation">
     <!-- <span v-show="fields.password_conf && fields.password_conf.valid">I'm valid</span> -->
     {{isPasswordConfirmed}}
