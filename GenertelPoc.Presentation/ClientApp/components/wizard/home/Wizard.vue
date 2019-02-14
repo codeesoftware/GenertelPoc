@@ -10,8 +10,15 @@
         ></component>
       </div>
     </div>
+    {{errors}}
     <div>
-      <button type="button" class="btn btn-primary" @click="next()" v-show="!isLastPage">Tovább</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        @click="next()"
+        :disabled="!isFormValid"
+        v-show="!isLastPage"
+      >Tovább</button>
       <button type="button" class="btn btn-danger" @click="back()" v-show="!isFirstPage">Vissza</button>
       <button type="button" class="btn btn-success" @click="send()" v-show="isLastPage">Küld</button>
     </div>
@@ -45,21 +52,23 @@ export default {
       this.$router.push(`/home/${--this.currentPageId}`);
     },
     next() {
-      this.$router.push(`/home/${++this.currentPageId}`);
+      if (this.isFormValid) {
+        this.$router.push(`/home/${++this.currentPageId}`);
+        return;
+      }
+      alert("noo");
     },
     send() {
       //    const offer = this.$store.state.offer.offerState;
       Axios.post(`${baseUrl}/api/HomeWizardApi/End`, this.viewModel);
       this.$router.push(`/home/${++this.currentPageId}`);
     }
-    // getPageViewModel(pageId) {
-    //   let currentPageViewModel = this.viewModel.pages.find(
-    //     p => p.pageId === pageId
-    //   );
-    //   return this.isLoaded ? currentPageViewModel : null;
-    // }
   },
   computed: {
+    isFormValid() {
+      console.log(this.errors.items.length);
+      return this.errors.items.length === 0;
+    },
     selectedPage() {
       const pages = [FirstPage, SecondPage, ThankYouPage];
       return pages[this.currentPageId - 1];

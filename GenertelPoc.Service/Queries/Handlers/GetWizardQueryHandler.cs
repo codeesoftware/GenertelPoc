@@ -21,7 +21,7 @@ namespace GenertelPoc.Service.Queries.Handlers
                     new FirstPageViewModel{
                         FullName = new Input<string>("sandor", ValidationMessage.VAL_100,ValidationMessage.VAL_103),
                         Age = new Input<int>(4,ValidationMessage.VAL_175),
-                        Damage = new Dropdown<string>("-",new[]{ "Égési sérülés,Reaktor"})
+                        Damage = new Dropdown<string>("-",new[]{ "Égési sérülés","Reaktor"})
                     }
                     ,
                       new SecondPageViewModel(){

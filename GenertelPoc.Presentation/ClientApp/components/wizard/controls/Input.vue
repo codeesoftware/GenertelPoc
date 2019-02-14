@@ -1,23 +1,23 @@
 <template>
   <div>
     <div class="form-group">
-      <label for="textInput">Text</label>
+      <label for="input">Text</label>
       <input
         type="text"
         v-validate="`${validations}`"
-        name="textInput"
+        name="input"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
         :value="property.value"
       >
-      <span class="badge badge-danger">{{ errors.first('textInput') }}</span>
+      <span class="badge badge-danger">{{ errors.first('input') }}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "text-input",
+  name: "input",
   props: {
     property: {
       type: Object,
@@ -29,12 +29,8 @@ export default {
       return _.join(this.property.validations.$values, "|");
     }
   }
-  // beforeCreate() {
-  //   this.validations = "VAL_100";
-  // }
 };
 </script>
 
 <style>
-
 </style>
