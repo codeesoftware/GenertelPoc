@@ -13,7 +13,7 @@ namespace GenertelPoc.Service.Queries.Handlers
         public async Task<MessageViewModel> Handle(GetValidationMessageQuery request, CancellationToken cancellationToken)
         {
             var vm = new MessageViewModel {
-                ValidationMessages = new Dictionary<string, string> {
+                ValidationMessages = new Dictionary<ValidationMessage, string> {
                     { ValidationMessage.VAL_100,"Kérem, ezt a mezőt feltétlenül töltse ki!" },
                     { ValidationMessage.VAL_103,"Kérjük, adja meg  a teljes nevet!" },
                     { ValidationMessage.VAL_175,"Nem megfelelő korcsoport!" },

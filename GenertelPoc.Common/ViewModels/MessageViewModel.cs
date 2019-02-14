@@ -4,11 +4,11 @@ namespace GenertelPoc.Common.ViewModels
 {
     public class MessageViewModel
     {
-        public IDictionary<string,string> ValidationMessages { get; set; }
+        public IDictionary<ValidationMessage, string> ValidationMessages { get; set; }
 
         public MessageViewModel()
         {
-            ValidationMessages = new Dictionary<string, string>();
+            ValidationMessages = new Dictionary<ValidationMessage, string>();
         }
     }
 }

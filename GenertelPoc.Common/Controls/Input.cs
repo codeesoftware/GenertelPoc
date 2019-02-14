@@ -8,9 +8,9 @@ namespace GenertelPoc.Common.Controls
     {
         public TValueType Value { get; set; }
 
-        public IEnumerable<string> Validations { get; set; }
+        public IEnumerable<ValidationMessage> Validations { get; set; }
 
-        public Input(TValueType value, params string[] validations)
+        public Input(TValueType value, params ValidationMessage[] validations)
         {
             Value = value;
             Validations = validations;

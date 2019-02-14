@@ -1,9 +1,13 @@
 ﻿namespace GenertelPoc.Common
 {
-    public static class ValidationMessage
+    public  enum ValidationMessage
     {
-       public const string VAL_100 = "VAL_100";
-       public const string VAL_103 = "VAL_103";
-       public const string VAL_175 = "VAL_175";
+        VAL_100 = 100,
+        VAL_103 = 103,
+        VAL_175 = 175,
+        VAL_206 = 206
+
+
+
     }
 }
