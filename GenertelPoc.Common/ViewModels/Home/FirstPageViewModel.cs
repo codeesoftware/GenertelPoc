@@ -1,12 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GenertelPoc.Common.Controls;
+using System.ComponentModel.DataAnnotations;
 
 namespace GenertelPoc.Common.ViewModels.Home
 {
     public class FirstPageViewModel:IPageViewModel
     {
-        [Required]
-        public UserInput<string> FullName { get; set; }
-        public UserInput<int> Age { get; set; }
+        public Input<string> FullName { get; set; }
+        public Input<int> Age { get; set; }
+
+        public Dropdown<string> Damage { get; set; }
+
         public int PageId => 1;
     }
 }

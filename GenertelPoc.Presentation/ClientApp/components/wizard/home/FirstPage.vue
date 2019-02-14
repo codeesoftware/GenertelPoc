@@ -1,17 +1,17 @@
 <template>
   <div>
-    <text-input v-model="pageViewModel.fullName.value" :property="pageViewModel.fullName"></text-input>
-    <text-input v-model="pageViewModel.age.value" :property="pageViewModel.age"></text-input>
+    <own-input v-model="pageViewModel.fullName.value" :property="pageViewModel.fullName"></own-input>
+    <own-input v-model="pageViewModel.age.value" :property="pageViewModel.age"></own-input>
   </div>
 </template>
 
 <script>
-import TextInput from "../inputs/TextInput.vue";
+import Input from "../controls/Input.vue";
 
 export default {
   name: "first-page",
   components: {
-    TextInput
+    OwnInput: Input
   },
 
   props: {
