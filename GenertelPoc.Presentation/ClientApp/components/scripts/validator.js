@@ -20,3 +20,13 @@ Validator.extend('175', {
         return Rules.between.validate(input, { min: 25, max: 55 });
     }
 });
+
+Validator.extend('isBigger', (value, [otherValue]) => {
+    console.log("isBigger");
+    console.log(value);
+    console.log(otherValue);
+
+    return value === otherValue;
+}, {
+        hasTarget: true
+    });

@@ -2,9 +2,15 @@
   <div>
     {{errors}}
     <!-- <own-input v-model="pageViewModel.email.value" :property="pageViewModel.email"></own-input> -->
-    <own-input v-model="pageViewModel.password.value" :property="pageViewModel.password"></own-input>
-    <input v-model="password_confirm" name="password_conf">
-    <span v-show="fields.password_conf && fields.password_conf.valid">I'm valid</span>
+    <!-- <own-input
+      v-model="pageViewModel.password.value"
+      :property="pageViewModel.password"
+      label="password"
+      ref="password"
+    ></own-input>-->
+    <input v-model="password" v-validate="'isBigger:confirmation'" type="password">
+    <input v-model="password_confirm" name="password_confirm" type="password" ref="confirmation">
+    <!-- <span v-show="fields.password_conf && fields.password_conf.valid">I'm valid</span> -->
     {{isPasswordConfirmed}}
   </div>
 </template>
@@ -21,6 +27,7 @@ export default {
   name: "second-page",
   data() {
     return {
+      password: "123",
       password_confirm: ""
     };
   },
@@ -35,20 +42,8 @@ export default {
   },
   computed: {
     isPasswordConfirmed() {
+      console.log(this.$refs);
       return this.password_confirm == this.pageViewModel.password.value;
-    }
-  },
-  watch: {
-    isPasswordConfirmed(val) {
-      console.log(val);
-      // this.$validator.flag("password_conf", {
-      //   valid: val
-      // });
-      bag.add({
-        field: "password_conf",
-        msg: "Wrong Credentials",
-        rule: "required"
-      });
     }
   }
 };
