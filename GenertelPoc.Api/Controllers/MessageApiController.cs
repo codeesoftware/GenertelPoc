@@ -17,7 +17,7 @@ namespace GenertelPoc.Api.Controllers
      
 
         [HttpGet]
-        [ResponseCache(Duration = 60)]
+        //[ResponseCache(Duration = 60)]
         public async Task<ActionResult<MessageViewModel>> GetHomeWizardMessages()
         {
             MessageViewModel vm = await mediator.Send(new GetValidationMessageQuery());

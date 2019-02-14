@@ -35,6 +35,8 @@ namespace GenertelPoc.Api
                       .WithOrigins("http://localhost:56417");
                 });
             });
+
+            services.AddMemoryCache();
             services.AddMvc()
                 .AddControllersAsServices()
                 .AddJsonOptions(options =>

@@ -11,6 +11,8 @@ namespace GenertelPoc.Infrastructure.Infrastructure
             builder.RegisterGeneric(typeof(ExceptionBehaviour<,>)).As(typeof(IPipelineBehavior<,>));
             builder.RegisterGeneric(typeof(RequestValidationBehavior<,>)).As(typeof(IPipelineBehavior<,>));
             builder.RegisterGeneric(typeof(RequestPerformancePipelineBehaviour<,>)).As(typeof(IPipelineBehavior<,>));
+            builder.RegisterGeneric(typeof(CacheBehaviour<,>)).As(typeof(IPipelineBehavior<,>)); 
+
         }
     }
 }
