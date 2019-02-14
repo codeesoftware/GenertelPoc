@@ -1,12 +1,19 @@
 <template>
   <div>
-    <own-input :property="pageViewModel.password" v-validate="'confirmed:confirmation'"></own-input>
-    <own-input :property="pageViewModel.password" type="password" ref="confirmation"></own-input>
+    {{errors}}
+    <own-input
+      v-model="pageViewModel.password.value"
+      :property="pageViewModel.password"
+      v-validate="'confirmed:confirmation'"
+    ></own-input>
+    <input v-model="password_confirm" type="password" ref="confirmation">
   </div>
 </template>
 
 <script>
 import Input from "../controls/Input.vue";
+
+// For example, you may want to add an error related to authentication:
 
 export default {
   name: "second-page",
