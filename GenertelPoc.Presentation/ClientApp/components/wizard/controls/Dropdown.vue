@@ -2,15 +2,26 @@
   <div>
     <div class="form-group">
       <label for="dropdown">Dropwdown</label>
-      <select :value="property.value" @change="setValue($event.target.value)" class="form-control">
+      <select
+        :value="property.value"
+        @change="setValue($event.target.value)"
+        class="form-control"
+        v-validate.continues.initial="`${validations}`"
+      >
         <option
           v-for="option in property.options.$values"
           :key="option"
           :value="option"
         >{{ option }}</option>
       </select>
-      
-      <span class="badge badge-danger">{{ errors.first('dropdown') }}</span>
+
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-danger"
+          v-for="error in errors.collect('input')"
+          :key="error.id"
+        >{{ error }}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -28,6 +39,11 @@ export default {
     setValue(val) {
       console.log(val);
       this.$emit("input", val);
+    }
+  },
+  computed: {
+    validations() {
+      return _.join(this.property.validations.$values, "|");
     }
   }
 };

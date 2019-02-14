@@ -10,7 +10,6 @@
         ></component>
       </div>
     </div>
-    {{errors}}
     <div>
       <button
         type="button"
@@ -20,7 +19,13 @@
         v-show="!isLastPage"
       >Tovább</button>
       <button type="button" class="btn btn-danger" @click="back()" v-show="!isFirstPage">Vissza</button>
-      <button type="button" class="btn btn-success" @click="send()" v-show="isLastPage">Küld</button>
+      <button
+        type="button"
+        class="btn btn-success"
+        @click="send()"
+        v-show="isLastPage"
+        :disabled="!isFormValid"
+      >Küld</button>
     </div>
   </div>
 </template>
@@ -59,14 +64,12 @@ export default {
       alert("noo");
     },
     send() {
-      //    const offer = this.$store.state.offer.offerState;
       Axios.post(`${baseUrl}/api/HomeWizardApi/End`, this.viewModel);
       this.$router.push(`/home/${++this.currentPageId}`);
     }
   },
   computed: {
     isFormValid() {
-      console.log(this.errors.items.length);
       return this.errors.items.length === 0;
     },
     selectedPage() {
@@ -94,13 +97,6 @@ export default {
   },
 
   beforeRouteEnter(to, from, next) {
-    // Axios.get(`${baseUrl}/api/HomeWizardApi/Start`).then(response => {
-    //   next(vm => {
-    //     vm.currentPageId = Number.parseInt(to.params.id);
-    //     vm.viewModel = response.data;
-    //   });
-    // });
-
     Axios.all([
       Axios.get(`${baseUrl}/api/HomeWizardApi/Start`),
       Axios.get(`${baseUrl}/api/MessageApi/GetHomeWizardMessages`)

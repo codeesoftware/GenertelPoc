@@ -4,13 +4,19 @@
       <label for="input">Text</label>
       <input
         type="text"
-        v-validate="`${validations}`"
+        v-validate.continues.initial="`${validations}`"
         name="input"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
         :value="property.value"
       >
-      <span class="badge badge-danger">{{ errors.first('input') }}</span>
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-danger"
+          v-for="error in errors.collect('input')"
+          :key="error.id"
+        >{{ error }}</li>
+      </ul>
     </div>
   </div>
 </template>
