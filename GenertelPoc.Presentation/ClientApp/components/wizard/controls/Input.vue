@@ -3,12 +3,14 @@
     <div class="form-group">
       <label for="input">Text</label>
       <input
+        id="password"
         type="text"
         v-validate.continues.initial="`${validations}`"
         name="input"
         class="form-control"
         v-on:input="$emit('input', $event.target.value)"
         :value="property.value"
+        ref="input"
       >
       <ul class="list-group">
         <li
