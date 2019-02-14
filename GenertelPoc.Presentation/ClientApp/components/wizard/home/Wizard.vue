@@ -1,6 +1,5 @@
 <template>
   <div class="ml-2">
-    {{currentPageId}}
     <div class="text-center">{{currentPageId}}. oldal</div>
     <div class="row page-header">
       <div class="col">

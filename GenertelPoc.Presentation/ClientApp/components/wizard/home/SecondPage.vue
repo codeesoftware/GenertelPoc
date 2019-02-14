@@ -18,10 +18,6 @@ export default {
       type: Object,
       required: true
     }
-  },
-  mounted() {
-    console.log("mounted"); // {x:1}
-    console.log(this.pageViewModel); // {x:1}
   }
 };
 </script>
