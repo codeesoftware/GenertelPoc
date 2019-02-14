@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace GenertelPoc.Api.Controllers
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
-    public class HomeWizardApiController : ControllerBase
+    public class HomeWizardApiController : BasicApiController
     {
         private readonly IMediator mediator;
 

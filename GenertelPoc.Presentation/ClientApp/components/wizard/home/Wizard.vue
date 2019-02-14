@@ -80,12 +80,29 @@ export default {
   },
 
   beforeRouteEnter(to, from, next) {
-    Axios.get(`${baseUrl}/api/HomeWizardApi/Start`).then(response => {
-      next(vm => {
-        vm.currentPageId = Number.parseInt(to.params.id);
-        vm.viewModel = response.data;
-      });
-    });
+    // Axios.get(`${baseUrl}/api/HomeWizardApi/Start`).then(response => {
+    //   next(vm => {
+    //     vm.currentPageId = Number.parseInt(to.params.id);
+    //     vm.viewModel = response.data;
+    //   });
+    // });
+
+    Axios.all([
+      Axios.get(`${baseUrl}/api/HomeWizardApi/Start`),
+      Axios.get(`${baseUrl}/api/MessageApi/GetHomeWizardMessages`)
+    ]).then(
+      Axios.spread((wizardViewModel, validatiomMessages) => {
+        next(vm => {
+          vm.currentPageId = Number.parseInt(to.params.id);
+          vm.viewModel = wizardViewModel.data;
+
+          vm.$store.commit(
+            "validationMessage/setMessages",
+            validatiomMessages.data.validationMessages
+          );
+        });
+      })
+    );
   }
 };
 </script>

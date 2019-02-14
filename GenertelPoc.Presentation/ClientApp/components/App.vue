@@ -15,9 +15,7 @@ export default {
     };
   },
   methods: {
-    change() {
-      console.log("dsa");
-    }
+    change() {}
   }
 };
 </script>

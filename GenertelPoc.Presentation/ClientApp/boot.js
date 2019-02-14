@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import App from './components/App.vue';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import store from './store/wizard.js';
+import store from './store/';
 import Wizard from "./components/wizard/home/Wizard.vue"
 import VeeValidate from 'vee-validate';
 window._ = require('lodash');
