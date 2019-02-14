@@ -7,8 +7,7 @@
         v-validate.continues.initial="`${validations}`"
         name="input"
         class="form-control"
-        v-on:input="$emit('input', $event.target.value)"
-        :value="property.value"
+        v-model="property.value"
       >
       <ul class="list-group">
         <li

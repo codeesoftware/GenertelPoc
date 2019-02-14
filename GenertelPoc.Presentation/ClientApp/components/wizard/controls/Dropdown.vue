@@ -3,8 +3,7 @@
     <div class="form-group">
       <label for="dropdown">Dropwdown</label>
       <select
-        :value="property.value"
-        @change="setValue($event.target.value)"
+        v-model="property.value"
         class="form-control"
         v-validate.continues.initial="`${validations}`"
       >

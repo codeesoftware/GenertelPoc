@@ -1,11 +1,7 @@
 <template>
   <div>
-    <own-input
-      v-model="pageViewModel.password.value"
-      :property="pageViewModel.password"
-      v-validate="'confirmed:confirmation'"
-    ></own-input>
-    <input v-model="password_confirm" type="password" ref="confirmation">
+    <own-input :property="pageViewModel.password" v-validate="'confirmed:confirmation'"></own-input>
+    <own-input :property="pageViewModel.password" type="password" ref="confirmation"></own-input>
   </div>
 </template>
 

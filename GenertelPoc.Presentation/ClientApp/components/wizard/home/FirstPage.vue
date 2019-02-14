@@ -1,8 +1,8 @@
 <template>
   <div>
-    <own-input v-model="pageViewModel.fullName.value" :property="pageViewModel.fullName"></own-input>
-    <own-input v-model="pageViewModel.age.value" :property="pageViewModel.age"></own-input>
-    <own-dropdown v-model="pageViewModel.damage.value" :property="pageViewModel.damage"></own-dropdown>
+    <own-input :property="pageViewModel.fullName"></own-input>
+    <own-input :property="pageViewModel.age"></own-input>
+    <own-dropdown :property="pageViewModel.damage"></own-dropdown>
   </div>
 </template>
 
