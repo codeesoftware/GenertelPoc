@@ -5,7 +5,7 @@
       <div class="col">
         <component
           v-bind:is="selectedPage"
-          v-bind:pageViewModel="getPageViewModel(currentPageId)"
+          v-bind:pageViewModel="selectedPageViewModel"
           v-if="isLoaded"
         ></component>
       </div>
@@ -51,18 +51,24 @@ export default {
       //    const offer = this.$store.state.offer.offerState;
       Axios.post(`${baseUrl}/api/HomeWizardApi/End`, this.viewModel);
       this.$router.push(`/home/${++this.currentPageId}`);
-    },
-    getPageViewModel(pageId) {
-      let currentPageViewModel = this.viewModel.pages.find(
-        p => p.pageId === pageId
-      );
-      return this.isLoaded ? currentPageViewModel : null;
     }
+    // getPageViewModel(pageId) {
+    //   let currentPageViewModel = this.viewModel.pages.find(
+    //     p => p.pageId === pageId
+    //   );
+    //   return this.isLoaded ? currentPageViewModel : null;
+    // }
   },
   computed: {
     selectedPage() {
       const pages = [FirstPage, SecondPage, ThankYouPage];
       return pages[this.currentPageId - 1];
+    },
+    selectedPageViewModel() {
+      let currentPageViewModel = this.viewModel.pages.find(
+        p => p.pageId === this.currentPageId
+      );
+      return currentPageViewModel;
     },
     isFirstPage() {
       return this.currentPageId <= 1;
@@ -90,14 +96,14 @@ export default {
       Axios.get(`${baseUrl}/api/HomeWizardApi/Start`),
       Axios.get(`${baseUrl}/api/MessageApi/GetHomeWizardMessages`)
     ]).then(
-      Axios.spread((wizardViewModel, validatiomMessages) => {
+      Axios.spread((wizardViewModel, validatiomMessagesViewModel) => {
         next(vm => {
           vm.currentPageId = Number.parseInt(to.params.id);
           vm.viewModel = wizardViewModel.data;
 
           vm.$store.commit(
             "validationMessage/setMessages",
-            validatiomMessages.data.validationMessages
+            validatiomMessagesViewModel.data
           );
         });
       })
