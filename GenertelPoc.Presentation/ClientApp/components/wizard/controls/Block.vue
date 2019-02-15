@@ -2,6 +2,7 @@
   <div>
     <label :for="name">{{label}}</label>
     <slot name="body"></slot>
+    <slot ></slot>
   </div>
 </template>
 

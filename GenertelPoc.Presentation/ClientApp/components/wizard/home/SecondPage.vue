@@ -9,8 +9,8 @@
         class="form-control"
         v-model.lazy.trim="pageViewModel.email.value"
       >
+      <error :errors="errors.collect('email')"></error>
     </block>
-    <error :errors="errors.collect('email')"></error>
 
     <block :label="pageViewModel.password.label" name="password_confirmation">
       <input
@@ -21,8 +21,8 @@
         class="form-control"
         ref="confirmation"
       >
+      <error :errors="errors.collect('password_confirmation')"></error>
     </block>
-    <error :errors="errors.collect('password_confirmation')"></error>
 
     <block :label="pageViewModel.password.label+' ismét'" name="password">
       <input
@@ -33,8 +33,8 @@
         class="form-control"
         v-model.trim="pageViewModel.password.value"
       >
+      <error :errors="errors.collect('password')"></error>
     </block>
-    <error :errors="errors.collect('password')"></error>
   </div>
 </template>
 
