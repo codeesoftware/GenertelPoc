@@ -8,8 +8,6 @@ namespace GenertelPoc.Infrastructure.Validators
     {
         public CreateOfferCommandValidator()
         {
-            RuleFor(x => x.Wizard.Pages).NotEmpty();
-            //RuleFor(x => x.Vat).NotEmpty();
 
         }
     }

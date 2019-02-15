@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <h1>Welcome to Hands on Vue.js with ASP.NET Core!</h1>
-
+  <transition name="fade" mode="out-in">
     <router-view/>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -19,3 +17,13 @@ export default {
   }
 };
 </script>
+<style>
+.fade-enter-active,
+.fade-leave.actice {
+  transition: opacity 0.3s ease-in-out;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
