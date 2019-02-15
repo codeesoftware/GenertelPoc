@@ -21,12 +21,4 @@ Validator.extend('175', {
     }
 });
 
-Validator.extend('isBigger', (value, [otherValue]) => {
-    console.log("isBigger");
-    console.log(value);
-    console.log(otherValue);
 
-    return value === otherValue;
-}, {
-        hasTarget: true
-    });
