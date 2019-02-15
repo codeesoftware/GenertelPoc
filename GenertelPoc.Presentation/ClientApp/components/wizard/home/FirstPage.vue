@@ -1,56 +1,61 @@
 <template>
   <div class="form-group">
-    <label for="fullName">{{pageViewModel.fullName.label}}</label>
-    <input
-      type="text"
-      v-validate.continues.initial="pageViewModel.fullName.validationsString"
-      name="fullName"
-      class="form-control"
-      v-model.trim="pageViewModel.fullName.value"
-    >
+    <block :label="pageViewModel.fullName.label" name="fullName">
+      <input
+        slot="body"
+        type="text"
+        v-validate.continues.initial="pageViewModel.fullName.validationsString"
+        name="fullName"
+        class="form-control"
+        v-model.trim="pageViewModel.fullName.value"
+      >
+    </block>
     <error :errors="errors.collect('fullName')"></error>
 
-    <label for="age">{{pageViewModel.age.label}}</label>
-    <input
-      type="text"
-      v-validate.continues.initial="pageViewModel.age.validationsString"
-      name="age"
-      class="form-control"
-      v-model.trim="pageViewModel.age.value"
-    >
+    <block :label="pageViewModel.age.label" name="age">
+      <input
+        slot="body"
+        type="text"
+        v-validate.continues.initial="pageViewModel.age.validationsString"
+        name="age"
+        class="form-control"
+        v-model.trim="pageViewModel.age.value"
+      >
+    </block>
     <error :errors="errors.collect('age')"></error>
 
-    <label for="damage">{{pageViewModel.damage.label}}</label>
-    <select
-      name="damage"
-      v-model="pageViewModel.damage.value"
-      class="form-control"
-      v-validate.continues.initial="pageViewModel.damage.validationsString"
-    >
-      <option
-        v-for="option in pageViewModel.damage.options.$values"
-        :key="option"
-        :value="option"
-      >{{ option }}</option>
-    </select>
+    <block :label="pageViewModel.damage.label" name="damage">
+      <select
+        slot="body"
+        name="damage"
+        v-model="pageViewModel.damage.value"
+        class="form-control"
+        v-validate.continues.initial="pageViewModel.damage.validationsString"
+      >
+        <option
+          v-for="option in pageViewModel.damage.options.$values"
+          :key="option"
+          :value="option"
+        >{{ option }}</option>
+      </select>
+    </block>
     <error :errors="errors.collect('damage')"></error>
-   
   </div>
 </template>
 
 <script>
 import Error from "../controls/Error.vue";
+import Block from "../controls/Block.vue";
 
 export default {
   name: "first-page",
   components: {
-    Error
+    Error,
+    Block
   },
-data(){
-  return{
-
-  }
-},
+  data() {
+    return {};
+  },
   props: {
     pageViewModel: {
       type: Object,
