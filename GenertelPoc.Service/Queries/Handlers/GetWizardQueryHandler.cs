@@ -26,7 +26,7 @@ namespace GenertelPoc.Service.Queries.Handlers
                     }
                     ,
                       new SecondPageViewModel(){
-                          Email =  new Input<string>("E-mail","sandor@jani.hu", ValidationMessage.VAL_206),
+                          Email =  new Input<string>("E-mail","sandor@jani.hu", ValidationMessage.VAL_206,ValidationMessage.VAL_301),
                           Password  =  new Input<string>("Jelszó",String.Empty, ValidationMessage.VAL_100),
                       }
                 }

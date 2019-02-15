@@ -6,7 +6,7 @@
       v-validate.continues.initial="pageViewModel.email.validationsString"
       name="email"
       class="form-control"
-      v-model="pageViewModel.email.value"
+      v-model.lazy="pageViewModel.email.value"
     >
     <error :errors="errors.collect('email')"></error>
 

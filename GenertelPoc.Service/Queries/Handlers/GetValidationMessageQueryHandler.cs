@@ -19,6 +19,7 @@ namespace GenertelPoc.Service.Queries.Handlers
                     { ValidationMessage.VAL_175,"Nem megfelelő korcsoport!" },
                     { ValidationMessage.VAL_206,"Az email cím formátuma hibás!" },
                     { ValidationMessage.VAL_300,"A két érték nem egyezik!" },
+                    { ValidationMessage.VAL_301,"Ilyen e-mail cím már van!" },
                 }
             };
 

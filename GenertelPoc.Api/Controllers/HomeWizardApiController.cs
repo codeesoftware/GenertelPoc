@@ -27,6 +27,13 @@ namespace GenertelPoc.Api.Controllers
             return Ok(vm);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<bool>> IsUniqueEmail(string email)
+        {
+            bool result = await mediator.Send(new IsUniqueEmailQuery() { Email = email });
+            return Ok(result);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> End([FromBody] WizardViewModel wizardViewModel)
