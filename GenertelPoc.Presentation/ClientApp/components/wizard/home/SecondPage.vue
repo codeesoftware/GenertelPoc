@@ -10,9 +10,19 @@
     >
     <error :errors="errors.collect('email')"></error>
 
-    <label for="password">{{pageViewModel.password.label}}</label>
+    <label for="password_confirmation">{{pageViewModel.password.label}}</label>
     <input
-      type="text"
+      type="password"
+      v-validate.continues.initial="pageViewModel.password.validationsString"
+      name="password_confirmation"
+      class="form-control"
+      ref="confirmation"
+    >
+    <error :errors="errors.collect('password_confirmation')"></error>
+
+    <label for="password">{{pageViewModel.password.label}} ismét</label>
+    <input
+      type="password"
       v-validate.continues.initial="pageViewModel.password.validationsString+'|VAL_300:confirmation'"
       name="password"
       class="form-control"
@@ -20,15 +30,6 @@
     >
     <error :errors="errors.collect('password')"></error>
 
-    <label for="password_confirmation">{{pageViewModel.password.label}} 1x</label>
-    <input
-      type="text"
-      v-validate.continues.initial="pageViewModel.password.validationsString"
-      name="password_confirmation"
-      class="form-control"
-      ref="confirmation"
-    >
-    <error :errors="errors.collect('password_confirmation')"></error>
   </div>
 </template>
 

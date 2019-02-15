@@ -34,8 +34,7 @@
       >{{ option }}</option>
     </select>
     <error :errors="errors.collect('damage')"></error>
-    <!-- <input :property="pageViewModel.age"></wn-input> -->
-    <!-- <dropdown :property="pageViewModel.damage"></wn-dropdown> -->
+   
   </div>
 </template>
 
