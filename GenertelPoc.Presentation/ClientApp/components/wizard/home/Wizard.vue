@@ -18,7 +18,9 @@
         :disabled="!isFormValid"
         v-show="!isLastPage"
       >Tovább</button>
+
       <button type="button" class="btn btn-danger" @click="back()" v-show="!isFirstPage">Vissza</button>
+      
       <button
         type="button"
         class="btn btn-success"
