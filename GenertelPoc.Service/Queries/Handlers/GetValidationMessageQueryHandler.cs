@@ -17,6 +17,7 @@ namespace GenertelPoc.Service.Queries.Handlers
                     { ValidationMessage.VAL_100,"Kérem, ezt a mezőt feltétlenül töltse ki!" },
                     { ValidationMessage.VAL_103,"Kérjük, adja meg  a teljes nevet!" },
                     { ValidationMessage.VAL_175,"Nem megfelelő korcsoport!" },
+                    { ValidationMessage.VAL_206,"Az email cím formátuma hibás!" },
                 }
             };
 
