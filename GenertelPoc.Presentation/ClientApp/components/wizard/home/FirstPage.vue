@@ -6,7 +6,7 @@
       v-validate.continues.initial="pageViewModel.fullName.validationsString"
       name="fullName"
       class="form-control"
-      v-model="pageViewModel.fullName.value"
+      v-model.trim="pageViewModel.fullName.value"
     >
     <error :errors="errors.collect('fullName')"></error>
 
@@ -16,7 +16,7 @@
       v-validate.continues.initial="pageViewModel.age.validationsString"
       name="age"
       class="form-control"
-      v-model="pageViewModel.age.value"
+      v-model.trim="pageViewModel.age.value"
     >
     <error :errors="errors.collect('age')"></error>
 

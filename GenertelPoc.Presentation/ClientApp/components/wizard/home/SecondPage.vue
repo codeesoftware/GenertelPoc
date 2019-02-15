@@ -6,7 +6,7 @@
       v-validate.continues.initial="pageViewModel.email.validationsString"
       name="email"
       class="form-control"
-      v-model.lazy="pageViewModel.email.value"
+      v-model.lazy.trim="pageViewModel.email.value"
     >
     <error :errors="errors.collect('email')"></error>
 
@@ -16,7 +16,7 @@
       v-validate.continues.initial="pageViewModel.password.validationsString+'|VAL_300:confirmation'"
       name="password"
       class="form-control"
-      v-model="pageViewModel.password.value"
+      v-model.trim="pageViewModel.password.value"
     >
     <error :errors="errors.collect('password')"></error>
 
@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return{
-      
+
     }
   },
   props: {

@@ -34,8 +34,8 @@
 import FirstPage from "./FirstPage.vue";
 import SecondPage from "./SecondPage.vue";
 import ThankYouPage from "./ThankYouPage.vue";
-import Axios from "axios";
-import Validator from "../../scripts/validator.js";
+import axios from "axios";
+import validator from "../../scripts/customValidator";
 
 const baseUrl = "https://localhost:44388";
 
@@ -64,7 +64,7 @@ export default {
       alert("noo");
     },
     send() {
-      Axios.post(`${baseUrl}/api/HomeWizardApi/End`, this.viewModel);
+      axios.post(`${baseUrl}/api/HomeWizardApi/End`, this.viewModel);
       this.$router.push(`/home/${++this.currentPageId}`);
     }
   },
@@ -97,11 +97,11 @@ export default {
   },
 
   beforeRouteEnter(to, from, next) {
-    Axios.all([
-      Axios.get(`${baseUrl}/api/HomeWizardApi/Start`),
-      Axios.get(`${baseUrl}/api/MessageApi/GetHomeWizardMessages`)
+    axios.all([
+      axios.get(`${baseUrl}/api/HomeWizardApi/Start`),
+      axios.get(`${baseUrl}/api/MessageApi/GetHomeWizardMessages`)
     ]).then(
-      Axios.spread((wizardViewModel, validatiomMessagesViewModel) => {
+      axios.spread((wizardViewModel, validatiomMessagesViewModel) => {
         next(vm => {
           vm.currentPageId = Number.parseInt(to.params.id);
           vm.viewModel = wizardViewModel.data;
