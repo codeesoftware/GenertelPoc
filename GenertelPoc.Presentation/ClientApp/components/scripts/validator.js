@@ -1,5 +1,23 @@
 import { Validator, Rules } from 'vee-validate';
 import store from "../../store";
+import settings from "./settings.js";
+import axios from "axios";
+
+const baseUrl = settings.baseUrl;
+
+const isUniqueEmail = (value) => {
+    return axios.get(`${baseUrl}/api/HomeWizardApi/IsUniqueEmail`, {
+        params: {
+            email: value
+        }
+    }).then((response) => {
+        return {
+            valid: response.data
+
+        };
+    });
+
+};
 
 Validator.extend('VAL_100', {
     getMessage: field => store.state.validationMessage.messages.VAL_100,
@@ -34,3 +52,8 @@ Validator.extend('VAL_300', {
         return input === args[0];
     }
 }, { hasTarget: true });
+
+Validator.extend('VAL_301', {
+    getMessage: (field, params, data) => store.state.validationMessage.messages.VAL_301,
+    validate: isUniqueEmail,
+});
