@@ -36,8 +36,9 @@ import SecondPage from "./SecondPage.vue";
 import ThankYouPage from "./ThankYouPage.vue";
 import axios from "axios";
 import validator from "../../scripts/customValidator";
+import settings from "../../scripts/settings"
 
-const baseUrl = "https://localhost:44388";
+const baseUrl = settings.baseUrl;
 
 export default {
   name: "wizard",
