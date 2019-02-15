@@ -47,7 +47,11 @@ export default {
   components: {
     Error
   },
+data(){
+  return{
 
+  }
+},
   props: {
     pageViewModel: {
       type: Object,

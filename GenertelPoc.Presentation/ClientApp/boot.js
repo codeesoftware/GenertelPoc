@@ -17,7 +17,7 @@ const routes = [
 ];
 const router = new VueRouter({ mode: 'history', routes: routes });
 new Vue({
-    router: router,
+    router,
     validator: VeeValidate,
     store,
     render: h => h(App)
