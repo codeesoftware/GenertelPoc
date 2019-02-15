@@ -9,8 +9,8 @@
         class="form-control"
         v-model.trim="pageViewModel.fullName.value"
       >
+      <error :errors="errors.collect('fullName')"></error>
     </block>
-    <error :errors="errors.collect('fullName')"></error>
 
     <block :label="pageViewModel.age.label" name="age">
       <input
@@ -21,8 +21,8 @@
         class="form-control"
         v-model.trim="pageViewModel.age.value"
       >
+      <error :errors="errors.collect('age')"></error>
     </block>
-    <error :errors="errors.collect('age')"></error>
 
     <block :label="pageViewModel.damage.label" name="damage">
       <select
@@ -38,8 +38,8 @@
           :value="option"
         >{{ option }}</option>
       </select>
+      <error :errors="errors.collect('damage')"></error>
     </block>
-    <error :errors="errors.collect('damage')"></error>
   </div>
 </template>
 
