@@ -1,33 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GenertelPoc.Common.Controls
 {
     public class Dropdown<TValueType>
     {
-
+        public string Label { get; set; }
         public TValueType Value { get; set; }
-        //public KeyValuePair<int, TValueType> Selected { get; set; }
-
         public IEnumerable<TValueType> Options { get; set; }
+        public string ValidationsString => String.Join("|", Validations);
+        public IEnumerable<ValidationMessage> Validations { get; set; }
 
-        public IEnumerable<string> Validations { get; set; }
-
-        public Dropdown(TValueType value,IEnumerable<TValueType> options, params string[] validations)
+        public Dropdown(string label,TValueType value,IEnumerable<TValueType> options, params ValidationMessage[] validations)
         {
-        //    Selected = value;
-      //      var tempOptions = new List<KeyValuePair<int, TValueType>> ();
-    //        int index = 0;
-            //foreach (TValueType option in options)
-            //{
-            //    tempOptions.Add(new KeyValuePair<int, TValueType>(++index, option));
-            //}
-            //Options = tempOptions;
+            if (string.IsNullOrWhiteSpace(label))
+            {
+                throw new ArgumentException("message", nameof(label));
+            }
+
+            Label = label;
             Options = options;
             Value = value;
             Validations = validations;
+
         }
 
-     
+
     }
 }

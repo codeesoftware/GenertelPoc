@@ -20,14 +20,14 @@ namespace GenertelPoc.Service.Queries.Handlers
                 Pages = new List<IPageViewModel>()
                 {
                     new FirstPageViewModel{
-                        FullName = new Input<string>("Sandor |Imre", ValidationMessage.VAL_100,ValidationMessage.VAL_103),
-                        Age = new Input<int>(27,ValidationMessage.VAL_175),
-                        Damage = new Dropdown<string>("-",new[]{ "Égési sérülés","Reaktor"})
+                        FullName = new Input<string>("Teljes név","Sandor Imre", ValidationMessage.VAL_100,ValidationMessage.VAL_103),
+                        Age = new Input<int>("Kor",27,ValidationMessage.VAL_175),
+                        Damage = new Dropdown<string>("Káreseméy","-",new[]{ "Égési sérülés","Reaktor"},ValidationMessage.VAL_100)
                     }
                     ,
                       new SecondPageViewModel(){
-                          Email =  new Input<string>("sandor@jani.hu", ValidationMessage.VAL_100),
-                          Password  =  new Input<string>(String.Empty, ValidationMessage.VAL_100),
+                          Email =  new Input<string>("E-mail","sandor@jani.hu", ValidationMessage.VAL_206),
+                          Password  =  new Input<string>("Jelszó",String.Empty, ValidationMessage.VAL_100),
                       }
                 }
             };
