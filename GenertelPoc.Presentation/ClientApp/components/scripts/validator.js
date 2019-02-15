@@ -28,5 +28,9 @@ Validator.extend('VAL_206', {
     }
 });
 
-
-
+Validator.extend('VAL_300', {
+    getMessage: field => store.state.validationMessage.messages.VAL_300,
+    validate: (input, args) => {
+        return input === args[0];
+    }
+}, { hasTarget: true });

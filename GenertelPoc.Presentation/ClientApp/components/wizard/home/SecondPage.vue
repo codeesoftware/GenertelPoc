@@ -13,7 +13,7 @@
     <label for="password">{{pageViewModel.password.label}}</label>
     <input
       type="text"
-      v-validate.continues.initial="pageViewModel.password.validationsString+'|confirmed:confirmation'"
+      v-validate.continues.initial="pageViewModel.password.validationsString+'|VAL_300:confirmation'"
       name="password"
       class="form-control"
       v-model="pageViewModel.password.value"
@@ -40,6 +40,7 @@ export default {
   components: {
     Error
   },
+  data() {},
   props: {
     pageViewModel: {
       type: Object,
