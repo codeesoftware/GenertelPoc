@@ -8,6 +8,7 @@
         name="input"
         class="form-control"
         v-model="property.value"
+        ref="confirmation"
       >
       <ul class="list-group">
         <li
@@ -28,6 +29,11 @@ export default {
       type: Object,
       required: true
     }
+  },
+  data() {
+    return {
+      content: this.property.value
+    };
   },
   computed: {
     validations() {
