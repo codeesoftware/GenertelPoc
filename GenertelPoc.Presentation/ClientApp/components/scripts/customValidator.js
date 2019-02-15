@@ -1,9 +1,9 @@
 import { Validator, Rules } from 'vee-validate';
 import store from "../../store";
 import axios from "axios";
+import settings from "./settings.js"
 
-
-const baseUrl = "https://localhost:44388";
+const baseUrl = settings.baseUrl;
 const isUniqueEmail = (value) => {
     return axios.get(`${baseUrl}/api/HomeWizardApi/IsUniqueEmail`, {
         params: {
