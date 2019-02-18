@@ -6,8 +6,9 @@
       <div class="col">
         <transition name="fade" mode="out-in">
           <component
-            v-bind:is="selectedPage"
-            v-bind:pageViewModel="selectedPageViewModel"
+            :is="selectedPage"
+            :viewModel="viewModel"
+            :currentPageId="currentPageId"
             v-if="isLoaded"
           ></component>
         </transition>
@@ -83,12 +84,6 @@ export default {
     selectedPage() {
       const pages = [FirstPage, SecondPage, ThankYouPage];
       return pages[this.currentPageId - 1];
-    },
-    selectedPageViewModel() {
-      let currentPageViewModel = this.viewModel.pages.find(
-        p => p.pageId === this.currentPageId
-      );
-      return currentPageViewModel;
     },
     isFirstPage() {
       return this.currentPageId <= 1;

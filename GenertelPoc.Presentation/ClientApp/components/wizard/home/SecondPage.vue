@@ -23,7 +23,7 @@
       >
       <error :errors="errors.collect('password')"></error>
     </block>
-    
+
     <block :label="pageViewModel.passwordConfirmation.label" name="passwordConfirmation">
       <input
         slot="body"
@@ -35,7 +35,6 @@
       >
       <error :errors="errors.collect('passwordConfirmation')"></error>
     </block>
-
   </div>
 </template>
 
@@ -49,14 +48,29 @@ export default {
     Error,
     Block
   },
+  computed: {
+    pageViewModel() {
+      let currentPageViewModel = this.viewModel.pages.find(
+        p => p.pageId === this.currentPageId
+      );
+      return currentPageViewModel;
+    }
+  },
   data() {
     return {};
   },
   props: {
-    pageViewModel: {
+    viewModel: {
       type: Object,
       required: true
-    }
+    },
+    currentPageId: {
+      type: Number,
+      required: true
+    },
+     validator: function (value) {
+        return 0 < value;
+      }
   }
 };
 </script>
