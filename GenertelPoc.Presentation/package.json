@@ -5,7 +5,9 @@
   "scripts": {
     "build:dev": "webpack --config webpack.development.config.js",
     "build:prod": "webpack",
-    "test": "nyc mocha-webpack ClientApp/components/wizard/**/*.spec.js --require test-setup"
+    "run:dev":"webpack-dev-server",
+    "testUnit": "nyc mocha-webpack ClientApp/components/wizard/**/*.spec.js --require test-setup",
+    "testE2E": "testcafe chrome  all ClientApp/tests/*.test.js  --app-init-delay 1000"
   },
   "devDependencies": {
     "aspnet-webpack": "^3.0.0",
@@ -15,6 +17,7 @@
     "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "0.5.0",
     "style-loader": "^0.23.1",
+    "testcafe": "^1.0.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
     "vue": "^2.6.4",

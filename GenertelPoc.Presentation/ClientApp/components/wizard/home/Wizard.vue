@@ -15,6 +15,7 @@
     </div>
     <div>
       <button
+       id="nextPageButton"
         type="button"
         class="btn btn-primary"
         @click="next()"
@@ -22,15 +23,16 @@
         v-show="!isLastPage"
       >Tovább</button>
       
-      <button type="button" class="btn btn-danger" @click="back()" v-show="!isFirstPage">Vissza</button>
+      <button  id="previousPageButton" type="button" class="btn btn-danger" @click="back()" v-show="!isFirstPage">Vissza</button>
       
       <button
+        id="endPageButton"
         type="button"
         class="btn btn-success"
-        @click="send()"
+        @click="end()"
         v-show="isLastPage"
         :disabled="!isFormValid"
-      >Küld</button>
+      >Befejezés</button>
     </div>
   </div>
 </template>
@@ -69,7 +71,7 @@ export default {
       }
       alert("noo");
     },
-    send() {
+    end() {
       axios.post(`${baseUrl}/api/HomeWizardApi/End`, this.viewModel);
       this.$router.push(`/home/${++this.currentPageId}`);
     }
@@ -105,7 +107,7 @@ export default {
   beforeRouteEnter(to, from, next) {
     axios
       .all([
-        axios.get(`${baseUrl}/api/HomeWizardApi/Start`),
+        axios.get(`${baseUrl}/api/HomeWizardApi/Begin`),
         axios.get(`${baseUrl}/api/MessageApi/GetHomeWizardMessages`)
       ])
       .then(

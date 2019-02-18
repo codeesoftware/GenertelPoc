@@ -21,7 +21,7 @@ namespace GenertelPoc.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<WizardViewModel>> Start()
+        public async Task<ActionResult<WizardViewModel>> Begin()
         {
             WizardViewModel vm = await mediator.Send(new GetWizardQuery());
             return Ok(vm);
