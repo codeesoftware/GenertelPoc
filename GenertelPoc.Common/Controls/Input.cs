@@ -11,9 +11,9 @@ namespace GenertelPoc.Common.Controls
         public TValueType Value { get; set; }
         public string ValidationsString => String.Join("|", Validations);
 
-        public IEnumerable<ValidationMessage> Validations { get; set; }
+        public IEnumerable<string> Validations { get; set; }
 
-        public Input(string label, TValueType value, params ValidationMessage[] validations)
+        public Input(string label, TValueType value, params string[] validations)
         {
             if (string.IsNullOrWhiteSpace(label))
             {

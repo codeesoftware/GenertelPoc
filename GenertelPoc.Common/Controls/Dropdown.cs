@@ -10,9 +10,9 @@ namespace GenertelPoc.Common.Controls
         public TValueType Value { get; set; }
         public IEnumerable<TValueType> Options { get; set; }
         public string ValidationsString => String.Join("|", Validations);
-        public IEnumerable<ValidationMessage> Validations { get; set; }
+        public IEnumerable<string> Validations { get; set; }
 
-        public Dropdown(string label,TValueType value,IEnumerable<TValueType> options, params ValidationMessage[] validations)
+        public Dropdown(string label,TValueType value,IEnumerable<TValueType> options, params string[] validations)
         {
             if (string.IsNullOrWhiteSpace(label))
             {

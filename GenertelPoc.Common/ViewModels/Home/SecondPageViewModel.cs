@@ -7,6 +7,7 @@ namespace GenertelPoc.Common.ViewModels.Home
         public Input<string> Email { get; set; }
 
         public Input<string> Password { get; set; }
+        public Input<string> PasswordConfirmation { get; set; }
 
         public int PageId => 2;
     }
