@@ -55,13 +55,29 @@ export default {
     Error,
     Block
   },
+  computed: {
+    pageViewModel() {
+      let currentPageViewModel = this.viewModel.pages.find(
+        p => p.pageId === this.currentPageId
+      );
+      return currentPageViewModel;
+    }
+  },
+
   data() {
     return {};
   },
   props: {
-    pageViewModel: {
+    viewModel: {
       type: Object,
       required: true
+    },
+    currentPageId: {
+      type: Number,
+      required: true,
+      validator: function (value) {
+        return 0 < value;
+      }
     }
   }
 };

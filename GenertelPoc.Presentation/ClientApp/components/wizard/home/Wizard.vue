@@ -6,8 +6,9 @@
       <div class="col">
         <transition name="fade" mode="out-in">
           <component
-            v-bind:is="selectedPage"
-            v-bind:pageViewModel="selectedPageViewModel"
+            :is="selectedPage"
+            :viewModel="viewModel"
+            :currentPageId="currentPageId"
             v-if="isLoaded"
           ></component>
         </transition>
