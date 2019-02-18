@@ -2,6 +2,7 @@
   <div class="form-group">
     <block :label="pageViewModel.fullName.label" name="fullName">
       <input
+        id="fullName"
         slot="body"
         type="text"
         v-validate.continues.initial="pageViewModel.fullName.validationsString"
@@ -14,6 +15,7 @@
 
     <block :label="pageViewModel.age.label" name="age">
       <input
+        id="age"
         slot="body"
         type="text"
         v-validate.continues.initial="pageViewModel.age.validationsString"
