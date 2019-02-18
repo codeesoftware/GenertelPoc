@@ -1,4 +1,5 @@
-import { Selector } from 'testcafe';
+import { Selector, ClientFunction } from 'testcafe';
+import $ from 'jquery';
 
 // A fixture must be created for each group of tests.
 fixture(`Index page`)
@@ -7,56 +8,75 @@ fixture(`Index page`)
 
 
 
-test('sandor', async testController => {
+test('sandor', async t => {
     const inputSelector = await Selector('#testSandor');
     debugger;
-    await testController
+    await t
         .expect(inputSelector.value).eql('sandor',"sandor nem létezik");
 });
 
-test('FirstPage/ fullNameInput', async testController => {
+test('firstPage_fullNameValidation_true', async t => {
     const fullNameInput = await Selector('#fullName');
-    await testController
+    await t
         .expect(fullNameInput.value).eql('Sandor Imre', "Sandor Imre nem létezik");
-    await testController
+    await t
         .click(fullNameInput)
         .pressKey('ctrl+a delete');
-    await testController
+    await t
         .typeText(fullNameInput, 'Janos')    
-    await testController
+    await t
         .expect(fullNameInput.value).eql('Janos', "Janos nem létezik");
     
     const fullNameErrors = await fullNameInput.sibling('ul').child();    
-    await testController
+    await t
         .expect(fullNameErrors.count).eql(1, "Kérjük, adja meg  a teljes nevet! nem létezik");
     
-    await testController
+    await t
         .click(fullNameInput)
         .pressKey('ctrl+a delete');
     
-    await testController
+    await t
         .expect(fullNameErrors.count).eql(2, "Kérem, ezt a mezőt feltétlenül töltse ki! nem létezik");
 });
 
 
-test('FirstPage/ ageInput', async testController => {
+test('firstPage_ageValidation_true', async t => {
     const ageInput = await Selector('#age');
-    await testController
+    await t
         .expect(ageInput.value).eql('27', "Kor nem 27");
 
-    await testController
+    await t
         .click(ageInput)
         .pressKey('ctrl+a delete');
-    await testController
+    await t
         .typeText(ageInput, '10')
-    await testController
+    await t
         .expect(ageInput.value).eql('10', "Kor nem 10");
     
     const ageErrors = await ageInput.sibling('ul').child();    
-    await testController
+    await t
         .click(ageInput)
         .pressKey('ctrl+a delete');
 
-    await testController
+    await t
         .expect(ageErrors.count).eql(1, "Nem megfelelő korcsoport! nem létezik");
+});
+
+
+test('firstPage_secondPageNavigation_true', async t => {
+    const nextPageButton = await Selector('#nextPageButton');
+    await t
+        .click(nextPageButton);
+    const getLocation = ClientFunction(() => document.location.href);
+
+    await t
+        .expect(getLocation()).contains('/home/2');
+    
+});
+
+test('secondPage_endButtonDisabled_true', async t => {
+    const endPageButton = await Selector('#endPageButton');
+    await t.expect(endPageButton.exists).ok();
+  //  await t.expect($('#endPageButton').disabled).ok();
+
 });
