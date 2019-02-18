@@ -15,7 +15,8 @@ namespace GenertelPoc.Service.Queries.Handlers
 
         public async Task<WizardViewModel> Handle(GetWizardQuery request, CancellationToken cancellationToken)
         {
-            var a = new WizardViewModel
+
+            var wizard = new WizardViewModel
             {
                 Pages = new List<IPageViewModel>()
                 {
@@ -32,7 +33,7 @@ namespace GenertelPoc.Service.Queries.Handlers
                       }
                 }
             };
-            return await Task.FromResult<WizardViewModel>(a);
+            return await Task.FromResult<WizardViewModel>(wizard);
         }
     }
 }
