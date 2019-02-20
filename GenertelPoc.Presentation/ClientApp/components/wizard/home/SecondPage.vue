@@ -49,7 +49,7 @@ export default {
     Error,
     Block
   },
- extends: CommonPage,
+  extends: CommonPage,
   data() {
     return {};
   }

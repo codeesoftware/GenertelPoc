@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NProgress from "nprogress";
 
 import store from './store/';
-import Wizard from "./components/wizard/home/Wizard.vue"
+import HomeWizard from "./components/wizard/home/HomeWizard.vue"
 import VeeValidate from 'vee-validate';
 window._ = require('lodash');
 
@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 Vue.use(VeeValidate);
 
 const routes = [
-    { path: "/home/:id", component: Wizard },
+    { path: "/home/:id", component: HomeWizard },
     { path: "*", redirect: "/home/1" },
 ];
 const router = new VueRouter({ mode: 'history', routes: routes });
