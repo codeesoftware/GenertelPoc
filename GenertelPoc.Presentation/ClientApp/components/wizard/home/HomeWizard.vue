@@ -62,7 +62,7 @@ export default {
   },
   data() {
     return {
-    wizardApi:"HomeWizardApi"
+    wizardApiController:"HomeWizardApi"
     };
   },
    computed: {

@@ -1,6 +1,4 @@
-<template>
-    
-</template>
+<template></template>
 
 <script>
 import axios from "axios";
@@ -9,13 +7,12 @@ import settings from "../../scripts/settings";
 
 const baseUrl = settings.baseUrl;
 
-
 export default {
- data() {
+  data() {
     return {
       currentPageId: Number,
       viewModel: null,
-      wizardApi:''//todo
+      wizardApiController: "" 
     };
   },
   methods: {
@@ -30,7 +27,7 @@ export default {
       alert("noo");
     },
     end() {
-      axios.post(`${baseUrl}/api/HomeWizardApi/End`, this.viewModel);
+      axios.post(`${baseUrl}/api/${this.wizardApiController}/End`, this.viewModel);
       this.$router.push(`/home/${++this.currentPageId}`);
     }
   },
@@ -38,9 +35,7 @@ export default {
     isFormValid() {
       return this.errors.items.length === 0;
     },
-    selectedPage() {
-     
-    },
+    selectedPage() {},
     isFirstPage() {
       return this.currentPageId <= 1;
     },
@@ -56,28 +51,30 @@ export default {
   },
 
   beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.currentPageId = Number.parseInt(to.params.id);
+    });
+  },
+
+  created() {
     axios
       .all([
-        axios.get(`${baseUrl}/api/HomeWizardApi/Begin`),
+        axios.get(`${baseUrl}/api/${this.wizardApiController}/Begin`),
         axios.get(`${baseUrl}/api/MessageApi/GetHomeWizardMessages`)
       ])
       .then(
         axios.spread((wizardViewModel, validatiomMessagesViewModel) => {
-          next(vm => {
-            vm.currentPageId = Number.parseInt(to.params.id);
-            vm.viewModel = wizardViewModel.data;
+          this.viewModel = wizardViewModel.data;
 
-            vm.$store.commit(
-              "validationMessage/setMessages",
-              validatiomMessagesViewModel.data
-            );
-          });
+          this.$store.commit(
+            "validationMessage/setMessages",
+            validatiomMessagesViewModel.data
+          );
         })
       );
   }
-}
+};
 </script>
 
 <style>
-
 </style>
