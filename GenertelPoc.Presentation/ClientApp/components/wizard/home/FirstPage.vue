@@ -48,37 +48,18 @@
 <script>
 import Error from "../controls/Error.vue";
 import Block from "../controls/Block.vue";
+import CommonPage from "../common/CommonPage.vue";
 
 export default {
   name: "first-page",
+
   components: {
     Error,
     Block
   },
-  computed: {
-    pageViewModel() {
-      let currentPageViewModel = this.viewModel.pages.find(
-        p => p.pageId === this.currentPageId
-      );
-      return currentPageViewModel;
-    }
-  },
-
+  extends: CommonPage,
   data() {
     return {};
-  },
-  props: {
-    viewModel: {
-      type: Object,
-      required: true
-    },
-    currentPageId: {
-      type: Number,
-      required: true,
-      validator: function (value) {
-        return 0 < value;
-      }
-    }
   }
 };
 </script>
