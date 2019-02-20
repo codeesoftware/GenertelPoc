@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenertelPoc.Repository", "G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenertelPoc.Common", "GenertelPoc.Common\GenertelPoc.Common.csproj", "{7A795ED0-FAA5-41C6-9EE8-E854508A99B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenertelPoc.Api", "GenertelPoc.Api\GenertelPoc.Api.csproj", "{090F8A5D-DF4A-48DA-96F2-1106BA990919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenertelPoc.Api", "GenertelPoc.Api\GenertelPoc.Api.csproj", "{090F8A5D-DF4A-48DA-96F2-1106BA990919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenertelPoc.Domain", "GenertelPoc.Domain\GenertelPoc.Domain.csproj", "{EE96E771-B6FF-4AE1-8F36-8DBA4172D8B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{090F8A5D-DF4A-48DA-96F2-1106BA990919}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{090F8A5D-DF4A-48DA-96F2-1106BA990919}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{090F8A5D-DF4A-48DA-96F2-1106BA990919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE96E771-B6FF-4AE1-8F36-8DBA4172D8B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE96E771-B6FF-4AE1-8F36-8DBA4172D8B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE96E771-B6FF-4AE1-8F36-8DBA4172D8B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE96E771-B6FF-4AE1-8F36-8DBA4172D8B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{29BFD19F-39C6-4898-A0AD-D0A26CE769BA} = {0AD0E4BE-CDC7-458A-ACCA-CDB333B0726C}
 		{7A795ED0-FAA5-41C6-9EE8-E854508A99B9} = {0AD0E4BE-CDC7-458A-ACCA-CDB333B0726C}
 		{090F8A5D-DF4A-48DA-96F2-1106BA990919} = {0AD0E4BE-CDC7-458A-ACCA-CDB333B0726C}
+		{EE96E771-B6FF-4AE1-8F36-8DBA4172D8B0} = {0AD0E4BE-CDC7-458A-ACCA-CDB333B0726C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1822D19F-61C1-40AD-A901-3691EA309A4E}

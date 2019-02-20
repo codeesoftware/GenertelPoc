@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
@@ -18,7 +19,7 @@ namespace GenertelPoc.Infrastructure.IOC
         {
             var builder = new ContainerBuilder();
             Assembly[] assemblies = GetAssemblies();
-            //services.AddAutoMapper(assemblies.First(a => a.GetName().Name.ToLower().Contains("contract")));
+            services.AddAutoMapper(assemblies.First(a => a.GetName().Name.ToLower().Contains("common")));
             builder.Populate(services);
             Assembly medatrAssembly = assemblies.First(a => a.GetName().Name.ToLower().Contains("service"));
             builder.AddMediatR(medatrAssembly);
