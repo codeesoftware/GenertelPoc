@@ -6,13 +6,16 @@ fixture(`Index page`)
     // Load the URL your development server runs on.
     .page('http://localhost:56417');
 
-
+class FirstPage{
+    constructor() {
+        this.sandor = Selector('#testSandor');
+    }
+}
 
 test('sandor', async t => {
-    const inputSelector = await Selector('#testSandor');
-    debugger;
+    let fistPage = new FirstPage();
     await t
-        .expect(inputSelector.value).eql('sandor',"sandor nem létezik");
+        .expect(fistPage.sandor.value).eql('sandor',"sandor nem létezik");
 });
 
 test('firstPage_fullNameValidation_true', async t => {
